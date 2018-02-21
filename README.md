@@ -12,9 +12,9 @@ This application is a PHP CMS/Framework developped to increase your developpment
 - speed your dev
 - integrated ORM
 - powerfull forms generator 
-- front/back communication system
+- back/front communication system
 - high security level
-- internationalisation
+- internationalization
 - integrated CMS 
 - administration desktop
 
