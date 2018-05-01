@@ -7,7 +7,9 @@ The current version on github is : v1.0.0
 v[MAJOR].[MINOR].[PATCH]
 
 MAJOR => Important refactoring, no backwards compatibility, new dependencies
+
 MIDDLE => New features, backwards compatibility but can have some deprecated functions to change
+
 PATCH => Some fixs or small features, backwards compatibility
 
 ## Historical versions
