@@ -1,0 +1,117 @@
+/*///////////////
+//////GENERAL////
+///////////////*/
+
+body {
+	font-size: 12px;
+	font-family: "KlavikaBold", "Trebuchet MS", Verdana, Arial, sans-serif;
+}
+
+/*///////////////
+///////ARRAY//////
+////////////////*/
+
+.cms_list .cms_datas tr {
+	
+}
+
+.cms_list .cms_datas td {
+	padding: 2px;
+}
+
+/*///////////////
+///////FONT//////
+////////////////*/
+
+.cms_title {
+	color: #1e7aed;
+	font-weight: bold;
+	font-size: 14px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+/*///////////////////
+///////POSITION//////
+///////////////////*/
+
+.cms_espacement_bottom_5 {
+	margin-bottom: 5px;
+}
+
+.cms_espacement_right_5 {
+	margin-right: 5px;
+}
+
+.cms_text_center {
+	text-align: center;
+}
+
+.cms_subdiv_float_left div{
+	float:left;
+}
+
+.clear {
+	clear: both;
+}
+
+.cms_center {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.u_fl {
+	float:left;
+}
+
+/*///////////////////
+////////COLOR////////
+///////////////////*/
+
+.opacity_50 {
+	filter: alpha(opacity =   50);
+	opacity: 0.5;
+	-moz-opacity: 0.50;
+}
+
+.cms_opacity_50 {
+	filter: alpha(opacity =   50);
+	opacity: 0.5;
+	-moz-opacity: 0.50
+}
+
+.cms_grey_background {
+	background-color: #F3F3F3;
+}
+
+.cms_red {
+	color: #800000;
+	font-weight: bold;
+}
+
+.cms_green {
+	color: #008000;
+	font-weight: bold;
+}
+
+
+/*////////////////////////////
+////////PURCENTAGE BAR////////
+////////////////////////////*/
+.purcent-avancement-form {
+	font-size: 11px;
+	color: #9A9A9A
+}
+
+.purcent-avancement-border {
+	border: 1px solid #D6D6D6;
+	height: 12px;
+	float: left;
+	margin-right: 5px
+}
+
+.purcent-avancement-bar {
+	background-color: #3D71B8;
+	height: 12px
+}

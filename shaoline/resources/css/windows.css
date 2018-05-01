@@ -1,0 +1,110 @@
+
+/*////////////////////////////
+////////////MASK//////////////
+////////////////////////////*/
+#cms_masque {
+	display: none;
+	position: fixed;
+	_position: absolute; /* hack for internet explorer 6*/
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: #FFFFFF;
+	border: 1px solid #cecece;
+	z-index: 50000;
+}
+
+/*////////////////////////////
+/////WINDOWS///////////////////
+////////////////////////////*/
+#cms_popup {
+	margin: auto;
+	background: #ffffff;
+	min-height: 100px;
+	display: none;
+	z-index: 50001;
+}
+
+#cms_waiting_masque {
+	display: none;
+	position: fixed;
+	_position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: #FFFFFF;
+	border: 1px solid #cecece;
+	z-index: 50002;
+	filter: alpha(opacity = 50);
+	opacity: 0.5;
+	-moz-opacity: 0.50;
+}
+
+.window-popin {
+	position: absolute;
+	/*box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);*/
+	z-index: 50000;
+	background-color: #fff;
+	box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.7);
+}
+
+.window-popin .window-menu {
+	float: right;
+	margin-right: 5px;
+}
+
+.window-popin .window-menu .window-btn {
+	float:left;
+    padding: 3px;
+}
+
+.window-popin .window-menu .window-btn img {
+	cursor: pointer;
+	position: relative;
+	top: 1px;
+}
+
+.window-popin .windows-titre {
+	float: left;
+	margin-left: 5px;
+	color: #fff;
+	font-weight: bold;
+	font-size: 14px;
+	margin-top: 3px;
+	cursor:pointer;
+	font-family: "KlavikaBold", "Trebuchet MS", Verdana, Arial, sans-serif;
+}
+
+.window-popin .windows-header {
+	width: 100%;
+	height: 25px;
+}
+
+.window-popin.blue{
+	border: 1px solid #208af1;
+}
+
+.window-popin.red {
+	border: 1px solid #F8222A;
+}
+
+.window-popin.blue .windows-header {
+	background: url("./../img/cms_blue.png") repeat-x scroll 0 0 #F3F3F3;
+}
+
+.window-popin.red .windows-header {
+	background: url("./../img/cms_red.png") repeat-x scroll 0 0 #F3F3F3;
+}
+
+.window-popin .windows-content {
+	padding: 5px;
+	position: relative;
+}
+
+.window-popin .windows-footer {
+	
+}
+
+#cms_flash_message ul {list-style: none;}

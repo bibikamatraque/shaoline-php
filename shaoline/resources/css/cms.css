@@ -1,0 +1,200 @@
+/*////////////////////////////
+///////CMS EDITOR PANEL///////
+////////////////////////////*/
+#cms_admin_picto_support {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	z-index: 50000;
+}
+
+#cms_admin_picto {
+	height: 15px;
+	width: 15px;
+	cursor: pointer;
+	background-image: url("../img/cms_btn_pen.png");
+	background-repeat: no-repeat;
+}
+
+.cms_chercher_image {
+	background: url("../img/cms_browse_file.png") no-repeat scroll center;
+	border: medium none;
+	cursor: pointer;
+	float: left;
+	height: 23px;
+	width: 31px;
+	margin-left: 2px;
+}
+
+.cms_input {
+    height: 22px;
+    padding: 0;
+    padding-left: 2px;
+    color: #606060;
+    font-style: oblique;
+    border: solid 1px #d6d6d6;
+    background: url('../img/background-search_input.gif') repeat-x;
+    font-family: Arial;
+}
+
+.cms_area {
+    height: 22px;
+    padding: 0;
+    padding-left: 2px;
+    color: #606060;
+    font-style: oblique;
+    border: solid 1px #d6d6d6;
+    font-family: Arial;
+    padding: 3px;
+}
+
+textarea.cms_input{
+	height: 50px;
+}
+
+.cms_link {
+	cursor: pointer;
+	color: #3D71B8;
+}
+
+.cms_button {
+    border: 1px solid #116AEA;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-image: url("../img/cms_blue.png");
+	background-repeat: repeat-x;
+	padding-bottom: 3px;
+	padding-top: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+	color: #fff;
+	font-weight: bold;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.cmsConfirmationBtn { text-align: center;}
+
+.cms_upload_file {
+	background-image: url("../img/cms_browse_file.png");
+	background-repeat: no-repeat;
+	border: medium none;
+	cursor: pointer;
+	float: left;
+	height: 23px;
+	width: 31px;
+	margin-left: 2px;
+}
+
+
+/*////////////////////////////
+/////ADMIN BLOCK REPORTING////
+////////////////////////////*/
+
+#cms_admin_block{
+	position: fixed;
+	filter: alpha(opacity = 50);
+	opacity: 0.5;
+	-moz-opacity: 0.50;
+	z-index: 10000;
+}
+
+#cms_admin_block #cms_admin_block_internal{
+	width:100%;
+	height:100%;
+	position:relative;
+}
+
+#cms_admin_block #cms_admin_block_internal .goto_admin_page{	
+	position:absolute;
+	cursor:pointer;
+	color: inherit;
+	text-decoration: none;
+}
+
+#cms_admin_block #cms_admin_block_internal .deconnection{
+	position:absolute;
+	cursor:pointer;
+}
+
+
+.cmsFile { 
+	height: 21px;
+	padding: 0;
+	padding-left: 2px;
+	color: #606060;
+	font-style: oblique;
+	border: solid 1px #d6d6d6;
+	background: url('../img/background-search_input.gif') repeat-x;
+	font-family: Arial;
+	float: left;
+}
+
+.cmsFileBtn { 
+	cursor: pointer;
+	background: url(../img/lookforFile.gif) no-repeat scroll center bottom #AAAAAA;
+	border: none;
+	height: 23px;
+	width: 31px;	
+	float: right;
+}
+
+.cmsFileInput {
+	filter: alpha(opacity = 0);
+	opacity: 0;
+	-moz-opacity: 0;
+	width:100%;
+	position: absolute;
+}
+
+.cmsLogList {
+	padding: 5px;
+	list-style: none;
+}
+
+.cmsLogList li {
+	padding : 2px;
+	max-width: 1000px; 
+}
+
+.CmsFatalLogLine {
+	background-color: #000;	
+	color: white;
+}
+
+.CmsErrorLogLine {
+	background-color: #FFC7CE;
+	color: #AD2D31;
+}
+
+.CmsSecurityLogLine {
+	background-color: #fc5569;
+	color: #fff;
+}
+
+.CmsWarnLogLine {
+	background-color: #F8CBAD;
+	color: #E06D31;
+}
+
+.CmsInfoLogLine {
+	background-color: #D9E1F2;
+	color: black;
+}
+
+.CmsDebugLogLine {
+	background-color: #f9f9f9;
+	color: black;
+}
+
+
+#cms_edit_picto {
+	display: none;
+	position: absolute;
+	cursor: pointer;
+	border: 1px solid red;
+}
+
+		

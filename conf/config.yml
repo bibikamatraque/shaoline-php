@@ -1,0 +1,49 @@
+####################
+# NECESSARY CONFIG #
+####################
+
+site:
+    url: mysite
+    folder: 
+    protocol: http://
+    version: 1.0.0
+    name: My first shaoline PHP Website
+    backoffice: administration
+
+bdd:
+    host: localhost
+    port: 3306
+    login: MySite
+    password: 12345
+    base: mysite
+    type: MysqlBddConnector
+
+plugins:
+
+proxy:
+    host: ~
+    port: ~
+
+env:
+    apache_log: all
+    log_path: \var\log\www\MySite
+    log_level: 6
+    xdebug:1
+
+security:
+    rsa: 0
+    encoded:
+        md5
+        sha1
+    htpasswds:
+        backoffice:
+            type: file
+            path: administration.php
+            active: 1
+            sentence: Restricted access
+            login: admin
+            password: admin
+        
+###################################
+# ADD HERE YOUR ADDITIONAL CONFIG #
+###################################

@@ -3,7 +3,7 @@
 
 ## What is shaoline-php ?
 
-This application is a PHP CMS/Framework developped to increase your developpment speed and to make them really easier. The solution provides the features to install and configure your Website from scatch in few minutes. It also give an adminstration back office and an asset of PHP functions to help you in your developpments.
+This application is a PHP framework developed to increase your development speed and to make them really easier. The solution provides the features to install and configure your Website from scratch in few minutes. It also give an administration back office and an set of PHP features to help you in your developments.
 
 ## Why using shaoline-php ?
 

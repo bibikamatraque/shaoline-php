@@ -1,0 +1,113 @@
+
+/*////////////////////////////
+///////////START MENU/////////
+////////////////////////////*/
+#cms_admin_taskbar {
+	position: fixed;
+	bottom: 0;
+	height: 30px;
+	width: 100%;
+	background-image: url("../img/cms_tack_bar.png");
+	background-repeat: repeat-x;
+}
+
+#cms_admin_start_button {
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+#cms_admin_start_button .cms_admin_start_button_left {
+	width: 9px;
+	height: 30px;
+	background-image: url("../img/cms_start_menu_left.png");
+	background-repeat: no-repeat;
+	float: left;
+}
+
+#cms_admin_start_button .cms_admin_start_button_right {
+	height: 30px;
+	background-image: url("../img/cms_start_menu_right.png");
+	background-repeat: no-repeat;
+	background-position: right top;
+	float: left;
+}
+
+#cms_admin_start_button .cms_admin_start_button_right a {
+	font-weight: bold;
+	padding-left: 5px;
+	padding-right: 13px;
+	position: relative;
+	text-decoration: none;
+	top: 7px;
+	color: #000;
+}
+
+#cms_admin_taskbar_support {
+	background-color: #979A9F;
+	border: solid 1px #3E434A;
+	min-height: 250px;
+	padding: 1px;
+	width: 200px;
+	bottom: 29px;
+	position: absolute;
+}
+
+#cms_admin_taskbar_panel {
+	background-color: #3E434A;
+	min-height: 250px;
+	width: 200px;
+}
+
+.cms_admin_taskbar_shortcut {
+	overflow: hidden;
+	width: 100px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.cms_admin_taskbar_shortcut:hover {
+	font-weight: bold;
+}
+
+.desktop-shortcut .img {
+	height: 50px;
+	width: 50px;
+}
+
+.desktop-shortcut .text {
+	color: white;
+}
+
+.shaoline_menu_panel_first {
+	
+}
+
+
+/*////////////////
+///MENU TYPE 2////
+////////////////*/
+
+.shaoline_menu_type_2_panel_level_1{
+	position:absolute;
+	background-color: #fff;
+	border: 1px solid #dedede;
+}
+
+.shaoline_menu_type_2_part_level_1{
+	float:left;
+	padding:10px;
+}
+
+.shaoline_menu_type_2_item_level_0 {
+	float:left;
+	padding: 5px;
+}
+
+.shaoline_menu_type_2_item_level_1{
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.shaoline_menu_type_2_item_level_0.selected{
+	font-weight: bold;
+}
