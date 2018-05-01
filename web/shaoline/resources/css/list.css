@@ -1,0 +1,214 @@
+
+/*////////////////////////////
+////////CMO LISTING///////////
+////////////////////////////*/
+
+
+.cms_list {
+	padding: 10px;
+}
+
+.shaoline_list {
+	border: 1px solid #2A7BDE;
+	margin-bottom: 15px;
+}
+
+.shaoline_list .shaoline_list_item {
+	float: left;
+    padding: 3px;
+    overflow: hidden;
+}
+
+.shaoline_list_item td input {
+	margin-bottom: 5px;
+}
+
+.shaoline_list .shaoline_list_line.shaoline_modulo2 {
+	background-color: #F3F3F3;
+}
+
+.shaoline_list_line .cms_formulaire{
+    float:left;
+}
+
+.shaoline_list_btn_edit
+{
+    background-image: url('../img/cms_btn_pen.png');
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    float: right;
+    margin-left: 5px;
+}
+
+.shaoline_list_btn_add {
+    background-image: url('../img/cms_btn_add.png');
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    float: right;
+    margin-left: 5px;
+}
+
+.shaoline_list_btn_refresh {
+    background-image: url('../img/cms_btn_refresh.png');
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    float: right;
+    margin-left: 5px;
+}
+
+.shaoline_list_btn_delete
+	{
+	background-image: url('../img/cms_btn_delete.png');
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	float: right;
+	margin-left: 5px;
+}
+
+.shaoline_list_btn_add_mapping
+	{
+	background-image: url('../img/cms_btn_add_mapping.png');
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	float: right;
+	margin-left: 5px;
+}
+
+.shaoline_list_btn_search{
+    background-image: url('../img/cms_btn_search.png');
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    float: right;
+    margin-left: 5px;
+}
+
+.cms_default_admin_listing.cms_cmo_list .cms_cmo_list_item_element_btn_delete_mapping
+{
+	background-image: url('../img/cms_btn_delete_mapping.png');
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	float: right;
+	margin-left: 5px;
+}
+
+
+.cms_default_admin_listing {
+	min-width: 250px;
+	padding: 0px;
+}
+
+.cms_default_admin_listing .cms_cmo_list_btn_add {
+	background-image: url('../img/cms_btn_add.png');
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	float: right;
+	margin-left: 5px;
+}
+
+.cms_default_admin_listing .cms_cmo_list_btn_refresh {
+	background-image: url('../img/cms_btn_refresh.png');
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	float: right;
+	margin-left: 5px;
+}
+
+.cms_default_admin_listing.cms_cmo_list .cms_cmo_list_command {
+	bottom: 0;
+	left: 50px;
+	position: absolute;
+}
+
+.cms_default_admin_listing.cms_cmo_list .cms_cmo_list_paggination {
+	background-image: url('../img/cms_btn_paggnation_middle_15x15.png');
+	background-repeat: repeat-x;
+	position: relative;
+	width: 100%;
+	height: 15px;
+	z-index: 0;
+	bottom: 0px;
+	left: 0px;
+}
+	
+.cms_default_admin_listing.cms_cmo_list .cms_cmo_list_paggination_label
+{
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	height: 0px;
+	z-index: -1;
+	font-weight: bold;
+	left: 0px;
+	color: #fff;
+	top: 1px;
+}
+
+.cms_default_admin_listing.cms_cmo_list .cms_cmo_list_btn.active {
+	color: white;
+	filter: alpha(opacity = 100);
+	opacity: 1;
+	-moz-opacity: 1;
+	cursor: pointer;
+}
+
+.cms_default_admin_listing.cms_cmo_list .cms_cmo_list_btn {
+	height: 15px;
+	width: 15px;
+	text-align: center;
+	font-size: 14px;
+	color: grey;
+	font-weight: bold;
+	filter: alpha(opacity = 0);
+	opacity: 0;
+	-moz-opacity: 0;
+}
+
+.cms_default_admin_listing.cms_cmo_list .cms_cmo_list_btn:hover {
+	font-weight: bold;
+}
+
+.cms_default_admin_listing.cms_cmo_list .cms_cmo_list_btn_first {
+	float: left;
+	font-size: 20px;
+  	top: -5px;
+  	position: relative;
+}
+
+.cms_default_admin_listing.cms_cmo_list .cms_cmo_list_btn_previous {
+	float: left;
+}
+
+.cms_default_admin_listing.cms_cmo_list .cms_cmo_list_btn_next {
+	float: right;
+}
+
+.cms_default_admin_listing.cms_cmo_list .cms_cmo_list_btn_last {
+	float: right;
+	font-size: 20px;
+  	top: -5px;
+  	position: relative;
+}
+
+.cms_default_admin_listing.cms_cmo_list .current_page {
+	display: none;
+}
+
+

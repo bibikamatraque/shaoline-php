@@ -1,0 +1,69 @@
+
+/*////////////////////////////
+/////////FORMULAIRES//////////
+////////////////////////////*/
+.cms_formulaire td {
+	vertical-align: middle;
+}
+
+/*////////////////////////////
+/////MULTISELECTION FIELD/////
+////////////////////////////*/
+.cms_multiple_selection {
+	border: 1px solid #D6D6D6;
+	min-height: 20px;
+	clear: left;
+	position: relative;
+	background-image: url('../img/cms_btn_multiselection_.png');
+	background-repeat: no-repeat;
+	background-position-x: right;
+}
+
+.cms_multiple_selection h2 {
+	font-weight: bold;
+	padding: 3px;
+}
+
+.cms_multiple_selection ul {
+	list-style: none;
+	max-height: 200px;
+	overflow-y: scroll;
+	position: absolute;
+	top: 22px;
+	left: -1px;
+	background-color: white;
+	border-left: 1px solid #D6D6D6;
+	border-bottom: 1px solid #D6D6D6;
+	border-right: 1px solid #D6D6D6;
+	width: 100%;
+}
+
+.cms_multiple_selection ul li {
+	list-style: none;
+}
+
+.cms_multiple_selection span {
+	position: relative;
+	top: -2px;
+}
+
+.cms_formulaire input {
+	float: left;
+}
+
+.cms_form_checker{
+	float:left;
+	padding-right: 5px;
+}
+
+.cms_form_checker td {
+	line-height: 28px;
+}
+
+.cms_capcha {
+	cirsor: pointer;
+}
+
+.cms_radio {
+	float: left;
+}

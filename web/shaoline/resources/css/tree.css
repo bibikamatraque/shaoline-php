@@ -1,0 +1,60 @@
+/*/////////
+///TREE////
+/////////*/
+.cms_default_admin_tree .cms_cmo_list_item_element {
+	float:left;
+}
+
+.cms_default_admin_tree{
+	border: 1px solid #2A7BDE;
+	margin-bottom: 15px;
+}
+
+.cms_default_admin_tree .cms_cmo_list_item_element_btn_edit {
+	background-image: url('../img/cms_btn_pen.png');
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	float: right;
+	margin-left: 5px;
+}
+
+.cms_default_admin_tree .cms_cmo_list_item_element_btn_delete {
+	background-image: url('../img/cms_btn_delete.png');
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	float: right;
+	margin-left: 5px;
+}
+
+.cms_default_admin_tree .cms_cmo_list_btn_add {
+	background-image: url('../img/cms_btn_add_item.png');
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	float: right;
+	margin-left: 5px;
+}
+
+.cms_default_admin_tree .cms_cmo_list_btn_refresh {
+	background-image: url('../img/cms_btn_refresh.png');
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	float: left;
+	margin-left: 5px;
+}
+
+.cms_default_admin_tree  .cms_cmo_list_paggination{
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	background-image: url('../img/cms_btn_paggnation_middle_15x15.png');
+	background-repeat: repeat-x;
+}

@@ -1,0 +1,123 @@
+
+/*//////////////////////
+//////ADMIN DESKTOP/////
+//////////////////////*/
+#cms_admin_body {
+	
+}
+
+.icon {
+	cursor: pointer;
+	width: 70px;
+	height: 60px;
+	position: absolute;
+	color: #fff;
+	text-align: center;
+}
+
+.icon:hover {
+	font-weight: bold;
+}
+
+.icon img {
+	width: 45px;
+	height: 45px;
+}
+
+.cms_desktop_icon {
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	cursor: pointer;
+}
+
+.cms_desktop_icon:hover {
+	font-weight: bold;
+}
+
+.cms_desktop_icon_label {
+	color: #fff;
+	padding: 5px;
+}
+
+.shaoline_menu_icon {
+	cursor: pointer;
+	float: left;
+	width: 200px;
+	overflow-x: hidden;
+}
+
+.shaoline_menu_icon:hover {
+	font-weight: bold;
+}
+
+.shaoline_menu_icon img {
+	width: 15px;
+	height: 15px;
+	float: left;
+}
+
+.shaoline_menu_icon_label {
+	float: left;
+	color: #fff;
+}
+
+.shaoline_menu_folder {
+	cursor: pointer;
+	padding-bottom: 5px;
+	width: 200px;
+	overflow-x: hidden;
+	padding-top: 5px;
+}
+
+.shaoline_menu_folder:hover {
+	font-weight: bold;
+}
+
+.shaoline_menu_folder span {
+	color: #fff;
+}
+
+.shaoline_menu_folder img {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.shaoline_menu_panel {
+	position: absolute;
+	background-color: #3E434A;
+	border: 1px solid #979A9F;
+	/*top: 0px;*/
+	padding: 1px;
+	position: absolute;
+	width: 200px;
+}
+
+/*////////////////////////////
+///////CONSTANT REPORTING/////
+////////////////////////////*/
+#cms_constant_reporting {
+	position: fixed;
+	right: 0;
+	background-color: white;
+	filter: alpha(opacity = 50);
+	opacity: 0.5;
+	-moz-opacity: 0.50;
+	bottom: 30px;
+}
+
+/*////////////////////////////
+///ADMIN LANGUAGE SELECTOR////
+////////////////////////////*/
+
+#cms_admin_language_selector {
+	position:absolute;
+	filter: alpha(opacity = 50);
+	opacity: 0.5;
+	-moz-opacity: 0.50;
+	top:0;
+	right:0px;
+	background-color: #fff;
+}
