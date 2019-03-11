@@ -31,26 +31,26 @@ class ShaPicture {
 
         if ($pictureWidth < 1 || $pictureWidth > self::CONST_MAX_WIDTH){
         	ShaUtilsLog::error(__CLASS__."::".__FUNCTION__." : Image width to important : $pictureWidth ($picturePath)");
-            return "shaoline/resources/img/cms_no_picture.png";
+            return "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_no_picture.png";
         }
         if ($pictureHeight < 1 || $pictureHeight > self::CONST_MAX_HEIGHT){
         	ShaUtilsLog::error(__CLASS__."::".__FUNCTION__." : Image height to important : $pictureHeight ($picturePath)");
-            return "shaoline/resources/img/cms_no_picture.png";
+            return "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_no_picture.png";
         }
 
         //. \ + * ? [ ^ ] $ ( ) { } = ! < > | : -
         /*if (!preg_match("/^[A-Za-z0-9_\\\\\/\-\.]+$/", $picturePath)){
          	ShaUtilsLog::error(__CLASS__."::".__FUNCTION__." : Bad image path : $picturePath");
-            return "shaoline/resources/img/cms_no_picture.png";
+            return "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_no_picture.png";
         }*/
 
         if (!is_file(ShaContext::getPathToWeb().$picturePath)){
-        	if (is_file(ShaContext::getPathToWeb()."shaoline/resources/img/cms_no_picture.png")){
+        	if (is_file(ShaContext::getPathToWeb()."shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_no_picture.png")){
         		ShaUtilsLog::warn(__CLASS__."::".__FUNCTION__." : Original picture not found : '".ShaContext::getPathToWeb().$picturePath."'");
-        		return self::getPicture("shaoline/resources/img/cms_no_picture.png", $pictureWidth, $pictureHeight);
+        		return self::getPicture("shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_no_picture.png", $pictureWidth, $pictureHeight);
         	} else {
-        		ShaUtilsLog::fatal(__CLASS__."::".__FUNCTION__." : Basic image not found : 'shaoline/resources/img/cms_no_picture.png'");
-        		return "shaoline/resources/img/cms_no_picture.png";
+        	    ShaUtilsLog::fatal(__CLASS__."::".__FUNCTION__." : Basic image not found : 'shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_no_picture.png'");
+        		return "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_no_picture.png";
         	}
         }
 
@@ -59,7 +59,7 @@ class ShaPicture {
         $ext = $pathInfo['extension'];
         if ($ext != 'png' && $ext != 'jpeg' && $ext != 'bmp' && $ext !='jpg'){
         	ShaUtilsLog::error(__CLASS__."::".__FUNCTION__." : Bad picture extension : $ext ($picturePath)");
-            return "shaoline/resources/img/cms_no_picture.png";
+            return "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_no_picture.png";
         }
 
         $finalPath =  $pathInfo['dirname'] ."/" . $pathInfo['filename'] . "_" . $pictureWidth . "_" . $pictureHeight . "." . $ext;

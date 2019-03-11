@@ -67,3 +67,15 @@
 .cms_radio {
 	float: left;
 }
+
+.zone_checker_picto_ok {
+	background-image: url('../img/checkTrue.png');
+	width: 16px;
+	height: 16px;
+}
+
+.zone_checker_picto_ko {
+	background-image: url('../img/checkFalse.png');
+	width: 16px;
+	height: 16px;
+}

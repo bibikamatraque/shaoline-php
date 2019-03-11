@@ -267,6 +267,7 @@ class MysqlBddConnector implements IBddConnector
             }
 
             $this->_setBddUtf8();
+            $this->_setSqlMode();
 
         }
     }
@@ -307,5 +308,16 @@ class MysqlBddConnector implements IBddConnector
         mysqli_query($this->_link, "SET character_set_results = utf8;");
         mysqli_query($this->_link, "SET character_set_connection = utf8;");
     }
+    
+    /**
+     * Force SQL mode
+     *
+     * @return void
+     */
+    private function _setSqlMode() {
+        mysqli_query($this->_link, "SET sql_mode='';");
+    }
+    
+    
 
 }

@@ -10,7 +10,7 @@
  * @category Core
  * @package  ShaUtils
  * @author   Bastien DUHOT <bastien.duhot@free.fr>
- * @license  mon-referendum.com copyright
+ * @license  Shaoline-php copyright
  * @link     No link
  * @deprecated
  */
@@ -194,7 +194,7 @@
 // 		} else if ($item['renderer'] == AbstractCmo::DISPLAY_TYPE_PICTURE) {
 			
 // 			if ($item['values']=="" || $item['values']=="[no translation]") {
-// 				$item['values'] = "shaoline/resources/img/cms_no_picture.png";
+// 				$item['values'] = "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_no_picture.png";
 // 			}
 // 			$control = AbstractCmo::constructAdminPictoDomFieldConfig($dao, $item['key'], AbstractCmo::DISPLAY_TYPE_PICTURE, $item['canEdit'], $item['width']);
 // 			return "<div " . $control . " ><img alt='" . $item['key'] . "' src='" . $item['values'] . "' style='" . $domWidth . "' /></div>";
@@ -210,7 +210,7 @@
 // 				throw new Exception("Bad value for field " . $item['key'] . " !");
 // 			}
 // 			if ($splitedValues[0]=="") {
-// 				$splitedValues[0] = "shaoline/resources/img/cms_no_picture.png";
+// 				$splitedValues[0] = "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_no_picture.png";
 // 			}
 // 			$control = AbstractCmo::constructAdminPictoDomFieldConfig($dao, $item['key'], AbstractCmo::DISPLAY_TYPE_PICTURE, $item['canEdit'], $item['width']);
 // 			return "<div " . $control . "><a alt='" . $item['key'] . "' href='" . $splitedValues[0] . "'><img alt='" . $item['key'] . "' src='" . $splitedValues[1] . "' " . $pictureWidth . " /></a></div>";

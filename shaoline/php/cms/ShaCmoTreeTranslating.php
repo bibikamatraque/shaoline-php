@@ -8,7 +8,6 @@
  * @package    Core
  * @subpackage Core
  * @author     Bastien DUHOT <bastien.duhot@free.fr>
- * @license    mon-referendum.com copyright
  * @link       No link
  * @deprecated
  */

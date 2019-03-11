@@ -164,8 +164,7 @@ class ShaGarbageCollector extends ShaCmo
     {
         $result = null;
         $oRecordset = ShaContext::bddSelect(
-            "SELECT garbage_code, garbage_unic, garbage_used FROM shaoline_garbage WHERE garbage_id = $gcId AND garbage_session='"
-            . session_id() . "' LIMIT 1"
+            "SELECT garbage_code, garbage_unic, garbage_used FROM shaoline_garbage WHERE garbage_id = $gcId AND garbage_session='" . session_id() . "' LIMIT 1"
         );
         $oRecord = $oRecordset->fetchAssoc();
         if ($oRecord) {
@@ -174,8 +173,7 @@ class ShaGarbageCollector extends ShaCmo
                     return "";
                 } else {
                     ShaContext::bddInsert(
-                        "UPDATE shaoline_garbage SET garbage_used = 1 WHERE garbage_id = $gcId AND garbage_session='"
-                        . session_id() . "' LIMIT 1"
+                        "UPDATE shaoline_garbage SET garbage_used = 1 WHERE garbage_id = $gcId AND garbage_session='"  . session_id() . "' LIMIT 1"
                     );
                 }
             }

@@ -260,12 +260,12 @@ class ShaOperationEditField extends ShaOperation
             $extention = substr($config['picture']['name'], $index + 1, strlen($config['picture']['name']) - $index - 1);
             $newFileName = $config['class'] . "_" . $abstractCmoObject->getHashPrimaryValues();
             //Check if class directory exist
-            if (!is_dir("shaoline/resources/img/upload/".$config['class'])) {
-                if (!mkdir("shaoline/resources/img/upload/".$config['class'])) {
+            if (!is_dir("shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/upload/".$config['class'])) {
+                if (!mkdir("shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/upload/".$config['class'])) {
                     throw new Exception(Dao::getTranslatorInstance()->t("disableToCreateFolder"));
                 }
             }
-            $targetPath = "shaoline/resources/img/upload/" .$config['class']. "/" . $newFileName . "." . $extention;
+            $targetPath = "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/upload/" .$config['class']. "/" . $newFileName . "." . $extention;
             if (!move_uploaded_file($config['picture']['tmp_name'], $targetPath)) {
                 throw new Exception(Dao::getTranslatorInstance()->t("disableToMoveUploadedFile"));
             }

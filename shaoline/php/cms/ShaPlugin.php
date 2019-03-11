@@ -9,13 +9,11 @@
  * @package    Core
  * @subpackage Core
  * @author     Bastien DUHOT <bastien.duhot@free.fr>
- * @license    mon-referendum.com copyright
  * @link       No link
  *
  */
 abstract class ShaPlugin
 {
-
     /**
      * Return directory name
      */
@@ -26,7 +24,7 @@ abstract class ShaPlugin
      *
      * @return void
      */
-    abstract public function setup();
+    public abstract function setup();
 
     /**
      * Return plugin path

@@ -169,12 +169,12 @@ UtilsWindow.moveWindow = function (_id) {
 
 var BTN_CLOSE_BLACK = new Array();
 BTN_CLOSE_BLACK['title'] = 'close';
-BTN_CLOSE_BLACK['img'] = 'shaoline/resources/img/cms_btn_close.png';
+BTN_CLOSE_BLACK['img'] = 'shaoline/resources_' + SHA_RESOURCE_SUFFIX + '/img/cms_btn_close.png';
 BTN_CLOSE_BLACK['onClick'] = 'UtilsWindow.closeWindow("_id_")';
 
 var BTN_MINIMISER_BLACK = new Array();
 BTN_MINIMISER_BLACK['title'] = 'minimiser';
-BTN_MINIMISER_BLACK['img'] = 'shaoline/resources/img/cms_btn_close.png';
+BTN_MINIMISER_BLACK['img'] = 'shaoline/resources_' + SHA_RESOURCE_SUFFIX + '/img/cms_btn_close.png';
 BTN_MINIMISER_BLACK['onClick'] = 'UtilsWindow.mimiserWindow("_id_")';
 
 var BORDER_DEFAULT = "border-default";
@@ -217,7 +217,7 @@ UtilsWindow.createWindow = function (name, titre, color, width, top, contenu, me
     //TODO use parameter tio active it
     //Maximize/minimize button
     //menu += "<div id='window-maximize-"+name+"' class='window-btn windows-maximize' >";
-    //menu += "<img src='shaoline/resources/img/cms_maximize.png' onclick=\"UtilsWindow.maximize('"+name+"')\" />";
+    //menu += "<img src='shaoline/resources_" + SHA_RESOURCE_SUFFIX + "/img/cms_maximize.png' onclick=\"UtilsWindow.maximize('"+name+"')\" />";
     //menu += "</div>";
 	
     if (menuElements.length) {
@@ -325,7 +325,7 @@ UtilsWindow.maximize = function(name){
 
     var windowsMaximizeBtn = document.getElementById("window-maximize-" + name);
     if (windowsMaximizeBtn == undefined) { return; }
-    windowsMaximizeBtn.innerHTML = "<img src='shaoline/resources/img/cms_maximize.png' onclick=\"UtilsWindow.minimize('"+name+"')\" />";
+    windowsMaximizeBtn.innerHTML = "<img src='shaoline/resources_" + SHA_RESOURCE_SUFFIX + "/img/cms_maximize.png' onclick=\"UtilsWindow.minimize('"+name+"')\" />";
 
 }
 
@@ -345,7 +345,7 @@ UtilsWindow.minimize = function(name){
 
     var windowsMaximizeBtn = document.getElementById("window-maximize-" + name);
     if (windowsMaximizeBtn == undefined) { return; }
-    windowsMaximizeBtn.innerHTML = "<img src='shaoline/resources/img/cms_maximize.png' onclick=\"UtilsWindow.maximize('"+name+"')\" />";
+    windowsMaximizeBtn.innerHTML = "<img src='shaoline/resources_" + SHA_RESOURCE_SUFFIX + "/img/cms_maximize.png' onclick=\"UtilsWindow.maximize('"+name+"')\" />";
 
 }
 

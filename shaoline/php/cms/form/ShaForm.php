@@ -571,7 +571,7 @@ class ShaForm extends ShaSerializable{
         if ($this->_isSubmitable) {
 
             $render = "
-                <div id='".$this->_domId."' onsubmit='Shaoline.submitForm(".$this->_gcId.", '".$this->_domId."')' >
+                <div id='".$this->_domId."' onsubmit='Shaoline.submitForm(".$this->_gcId.", \"".$this->_domId."\")' >
                     <table class='cms_formulaire' id='$formName'>
                         [DATAS]
                     </table>
@@ -885,7 +885,7 @@ class ShaForm extends ShaSerializable{
 
                             $newPath = ShaContext::uploadFile($file);
                             if ($newPath == ""){
-                                return self::_errorFormatter(ShaContext::t("uploaded_file_size_too_big"));
+                                return self::_errorFormatter(ShaContext::t("error_during_file_upload"));
                             }
                             $values[$index] = array($newPath);
                         }

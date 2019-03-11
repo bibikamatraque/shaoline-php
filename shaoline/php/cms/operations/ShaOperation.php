@@ -34,7 +34,9 @@ abstract class ShaOperation extends ShaSerializable
     protected $_refreshActions = array();
     /** @var array _postParameters Additional field to add in POST request */
     protected $_postParameters = array();
-
+    /** @var bool $_noMask Add true value for second parameter to doAction JS function  */
+    protected $_noMask = false;
+    
     /********************/
     /* ABSTRACT METHODS */
     /********************/
@@ -246,6 +248,27 @@ abstract class ShaOperation extends ShaSerializable
         $this->_postParameters = $parameters;
         return $this;
     }
+    
+    
+    /**
+     * Return the doAction mask parameter
+     *
+     * @return array
+     */
+    public function getNoMask()
+    {
+        return $this->_noMask;
+    }
+    
+    /**
+     *
+     * @param array $parameters
+     * @return bool
+     */
+    public function setNoMask($value){
+        $this->_noMask = $value;
+        return $this;
+    }
 
     /**********************/
     /* SPECIFIC FUNCTIONS */
@@ -284,10 +307,15 @@ abstract class ShaOperation extends ShaSerializable
      */
     public function getDomEvent($sJsEvent = 'onclick') {
 
+        $noMask = "";
+        if ($this->_noMask){
+            $noMask = ", false";
+        }
+        
         if (count($this->_postParameters) > 0){
             return " gcid='".$this->_gcId."' $sJsEvent='Shaoline.doExtendedAction(".$this->_gcId.", '".$this->getEncodedPostParameters()."')' ";
         } else {
-            return " gcid='".$this->_gcId."' $sJsEvent='Shaoline.doAction(".$this->_gcId.")' ";
+            return " gcid='".$this->_gcId."' $sJsEvent='Shaoline.doAction(" . $this->_gcId . $noMask . ")' ";
         }
 
     }

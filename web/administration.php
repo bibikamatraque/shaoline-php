@@ -30,7 +30,7 @@ ShaGarbageCollector::deleteSessionItem();
 //Write basic head requirment
 echo ShaContext::writeBasicHeadInfo();
 echo ShaContext::insertAdminCss();
-echo ShaContext::insertJs();
+echo ShaContext::insertAdminJs();
 
 ?>
 

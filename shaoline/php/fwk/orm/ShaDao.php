@@ -484,7 +484,6 @@ abstract class ShaDao extends ShaOrm
                 }
             } else {
                 $this->bddInsert($insert . $values, false);
-
             }
 
         }

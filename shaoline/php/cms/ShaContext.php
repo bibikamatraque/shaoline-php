@@ -7,82 +7,85 @@
  * @package    Core
  * @subpackage Core
  * @author     Bastien DUHOT <bastien.duhot@free.fr>
- * @license    mon-referendum.com copyright
  * @link       No link
  *
  */
 class ShaContext
 {
 
-	private static $_obfuscatedAdminCssFile = 'shaoline/resources/css/shaoline.admin.min.css';
-	private static $_adminCssFiles = array(
-			'shaoline/resources/css/reset.css',
-			'shaoline/resources/css/desktop.css',
-			'shaoline/resources/css/utils.css',
-			'shaoline/resources/css/cms.css',
-			'shaoline/resources/css/menu.css',
-			'shaoline/resources/css/windows.css',
-			'shaoline/resources/css/list.css',
-			'shaoline/resources/css/formulaire.css',
-			'shaoline/resources/css/tree.css',
-			'shaoline/resources/utils/jquery/css/jquery-ui-1.10.3.custom.min.css',
-			'shaoline/resources/utils/jquery/css/jquery.treeview.css',
-			'shaoline/resources/utils/jquery/css/jquery-picklist.css',
-			'shaoline/resources/utils/jquery/css/jquery.jqplot.css'	
-	);
+    //private static function getObfuscatedAdminCssFile() { return 'shaoline/resources/css/shaoline.admin.min' . ShaPage::getCacheSuffix() . '.css'; }
+    private static function getObfuscatedAdminCssFile() { return 'shaoline/resources_' .  ShaPage::getCacheSuffix() . '/css/shaoline.admin.min.css'; }
+    private static $_adminCssFiles = array(
+        'shaoline/resources/css/reset.css',
+        'shaoline/resources/css/desktop.css',
+        'shaoline/resources/css/utils.css',
+        'shaoline/resources/css/cms.css',
+        'shaoline/resources/css/menu.css',
+        'shaoline/resources/css/windows.css',
+        'shaoline/resources/css/list.css',
+        'shaoline/resources/css/formulaire.css',
+        'shaoline/resources/css/tree.css',
+        'shaoline/resources/utils/jquery/css/jquery-ui-1.10.3.custom.min.css',
+        'shaoline/resources/utils/jquery/css/jquery.treeview.css',
+        'shaoline/resources/utils/jquery/css/jquery-picklist.css',
+        'shaoline/resources/utils/jquery/css/jquery.jqplot.css'
+    );
 	
-	private static $_obfuscatedCssFile = 'shaoline/resources/css/shaoline.min.css';
+	//private static function getObfuscatedCssFile() { return 'shaoline/resources/css/shaoline.min' . ShaPage::getCacheSuffix() . '.css'; }
+    private static function getObfuscatedCssFile() { return 'shaoline/resources_' .  ShaPage::getCacheSuffix() . '/css/shaoline.min.css'; }
 	private static $_cssFiles = array(
-			'shaoline/resources/css/reset.css',
-			'shaoline/resources/css/utils.css',
-			'shaoline/resources/css/cms.css',
-			'shaoline/resources/css/menu.css',
-			'shaoline/resources/css/windows.css',
-			'shaoline/resources/utils/jquery/css/jquery-ui-1.10.3.custom.min.css',
-			'shaoline/resources/utils/jquery/css/jquery.treeview.css',
-			'shaoline/resources/utils/jquery/css/jquery-picklist.css',
-			'shaoline/resources/utils/jquery/css/jquery.jqplot.css'
+	    'shaoline/resources/css/reset.css',
+	    'shaoline/resources/css/utils.css',
+	    'shaoline/resources/css/cms.css',
+	    'shaoline/resources/css/menu.css',
+	    'shaoline/resources/css/windows.css',
+	    'shaoline/resources/utils/jquery/css/jquery-ui-1.10.3.custom.min.css',
+	    'shaoline/resources/utils/jquery/css/jquery.treeview.css',
+	    'shaoline/resources/utils/jquery/css/jquery-picklist.css',
+	    'shaoline/resources/utils/jquery/css/jquery.jqplot.css'
 	);
 	
-	private static $_obfuscatedAdminJsFile = 'shaoline/resources/js/shaoline.admin.min.js';
+	//private static function getObfuscatedAdminJsFile() { return 'shaoline/resources/js/shaoline.admin.min' . ShaPage::getCacheSuffix() . '.js'; }
+	private static function getObfuscatedAdminJsFile() { return 'shaoline/resources_' .  ShaPage::getCacheSuffix() . '/js/shaoline.admin.min.js'; }
 	private static $_adminJsFiles = array(
-			
-			'shaoline/resources/utils/rsa/jsbn.js',
-			'shaoline/resources/utils/rsa/rsa.js',
-			//'shaoline/resources/utils/rsa/sha1.js',
-			'shaoline/resources/utils/jquery/js/jquery-1.11.1.min.js',
-			'shaoline/resources/utils/jquery/js/jcycle.pack.js',
-			'shaoline/resources/utils/jquery/js/jcarousel-lite.js',
-			'shaoline/resources/utils/jquery/js/jquery-asynchrone-upload.js',
-			'shaoline/resources/utils/jquery/js/jquery.ui-1.11.2.js',
-			'shaoline/resources/utils/jquery/js/jquery.treeview.js',
-			'shaoline/resources/utils/jquery/js/jquery.cookie.js',
-			'shaoline/resources/utils/jquery/js/jquery.ui.widget.min.js',
-			'shaoline/resources/utils/jquery/js/jquery-picklist.min.js',
-			'shaoline/resources/utils/jquery/js/jquery.noconflict.js',
-			'shaoline/resources/js/utils/UtilsJquery.js',
-			'shaoline/resources/js/utils/UtilsString.js',
-			'shaoline/resources/js/utils/UtilsNetwork.js',
-			'shaoline/resources/js/utils/UtilsForm.js',
-			'shaoline/resources/js/utils/UtilsMenu.js',
-			'shaoline/resources/js/utils/UtilsRegex.js',
-			'shaoline/resources/js/utils/UtilsStyle.js',
-			'shaoline/resources/js/utils/Utils3D.js',
-			'shaoline/resources/js/utils/UtilsWindow.js',
-			'shaoline/resources/js/utils/UtilsAjax.js',
-			'shaoline/resources/js/Shaoline.js',
-			'shaoline/resources/utils/google/jsapi.js',
-			'shaoline/resources/utils/google/google.js',
-			'shaoline/resources/utils/jquery/js/jquery.jqplot.min.js',
-			'shaoline/resources/utils/jquery/js/jqplot.dateAxisRenderer.min.js',
-			'shaoline/resources/utils/jquery/js/jqplot.highlighter.min.js',
-			'shaoline/resources/utils/jquery/js/jqplot.pieRenderer.min.js',
-			'shaoline/resources/utils/jquery/js/jqplot.categoryAxisRenderer.min.js',
-			'shaoline/resources/utils/jquery/js/jqplot.barRenderer.min.js',
-			'shaoline/resources/utils/wbgl/three.min.js'
+	    
+	    'shaoline/resources/utils/rsa/jsbn.js',
+	    'shaoline/resources/utils/rsa/rsa.js',
+	    //'shaoline/resources/utils/rsa/sha1.js',
+	    'shaoline/resources/utils/jquery/js/jquery-1.11.1.min.js',
+	    'shaoline/resources/utils/jquery/js/jcycle.pack.js',
+	    'shaoline/resources/utils/jquery/js/jcarousel-lite.js',
+	    'shaoline/resources/utils/jquery/js/jquery-asynchrone-upload.js',
+	    'shaoline/resources/utils/jquery/js/jquery.ui-1.11.2.js',
+	    'shaoline/resources/utils/jquery/js/jquery.treeview.js',
+	    'shaoline/resources/utils/jquery/js/jquery.cookie.js',
+	    'shaoline/resources/utils/jquery/js/jquery.ui.widget.min.js',
+	    'shaoline/resources/utils/jquery/js/jquery-picklist.min.js',
+	    'shaoline/resources/utils/jquery/js/jquery.noconflict.js',
+	    'shaoline/resources/js/utils/UtilsJquery.js',
+	    'shaoline/resources/js/utils/UtilsString.js',
+	    'shaoline/resources/js/utils/UtilsNetwork.js',
+	    'shaoline/resources/js/utils/UtilsForm.js',
+	    'shaoline/resources/js/utils/UtilsMenu.js',
+	    'shaoline/resources/js/utils/UtilsRegex.js',
+	    'shaoline/resources/js/utils/UtilsStyle.js',
+	    'shaoline/resources/js/utils/Utils3D.js',
+	    'shaoline/resources/js/utils/UtilsWindow.js',
+	    'shaoline/resources/js/utils/UtilsAjax.js',
+	    'shaoline/resources/js/Shaoline.js',
+	    'shaoline/resources/utils/google/jsapi.js',
+	    'shaoline/resources/utils/google/google.js',
+	    'shaoline/resources/utils/jquery/js/jquery.jqplot.min.js',
+	    'shaoline/resources/utils/jquery/js/jqplot.dateAxisRenderer.min.js',
+	    'shaoline/resources/utils/jquery/js/jqplot.highlighter.min.js',
+	    'shaoline/resources/utils/jquery/js/jqplot.pieRenderer.min.js',
+	    'shaoline/resources/utils/jquery/js/jqplot.categoryAxisRenderer.min.js',
+	    'shaoline/resources/utils/jquery/js/jqplot.barRenderer.min.js',
+	    'shaoline/resources/utils/wbgl/three.min.js'
 	);
 	
-	private static $_obfuscatedJsFile = 'shaoline/resources/js/shaoline.min.js';
+	//private static function getObfuscatedJsFile() { return 'shaoline/resources/js/shaoline.min' . ShaPage::getCacheSuffix() . '.js'; }
+	private static function getObfuscatedJsFile() { return 'shaoline/resources_' .  ShaPage::getCacheSuffix() . '/js/shaoline.min.js'; }
 	private static $_jsFiles = array(
 			
 			'shaoline/resources/utils/rsa/jsbn.js',
@@ -120,8 +123,10 @@ class ShaContext
 	);
 		
     //Default no picture URL
-    const CONST_NO_PICTURE = "shaoline/resources/img/no_picture.png";
-
+    public static function getConstantNoPicture() {
+        return "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/no_picture.png";
+    }
+    
     /** @type ShaConfiguration $_configuration */
     private static $_configuration = null;
     /** @type IBddConnector $_orm */
@@ -507,8 +512,9 @@ class ShaContext
 
                 ->userGroup('root', 'admin')
 
-                //->language(1,'French','shaoline/resources/img/flags/FR.png','FR','fr-fr', '', 1)
-                ->language(1,'English','shaoline/resources/img/flags/GB.png','EN','en-gb', '', 1)
+                //TODO : bad folder
+                //->language(1,'French','shaoline/resources_" . ShaPage::getCacheSuffix() . /img/flags/FR.png','FR','fr-fr', '', 1)
+                ->language(1,'English','shaoline/resources_" . ShaPage::getCacheSuffix() . /img/flags/GB.png','EN','en-gb', '', 1)
 
                 ->parameter('MAINTENANCE', '0', '1 = maintenance mode, 0 if not')
                 ->parameter('GOOGLE_ANALYTIC_ID', '', 'Google analytics ID')
@@ -528,7 +534,7 @@ class ShaContext
                 ->parameter('MAIL_FROM_NAME','','Mail from name')
                 ->parameter('MAIL_ALLOWED','0','1 = Mail actived')
                 ->parameter('MAIL_ADMINS','','Admin mail')
-                ->parameter('MAIL_LOGO_URL',ShaContext::getPathToWeb().'shaoline/resources/img/logo.png','Mail logo url')
+                ->parameter('MAIL_LOGO_URL',ShaContext::getPathToWeb().'shaoline/resources_' . self::getCacheSuffix() . '/img/logo.png','Mail logo url')
                 
                 //Smtp
 				->parameter('SMTP_HOST','','Smtp ip')
@@ -564,23 +570,23 @@ class ShaContext
                 ->parameter('RSA_KEY_QTY', 50, 'Max IP conn,ection attempts')
                 ->parameter('USER_MAGIC_DURATION', 24 * 3600, 'Magic key duration in seconds')
                 
-                ->application("USERS", "Users","shaoline/resources/img/icons/users.png","ShaContext::getShowCmoObjectListGc('ShaUser')","system/users","User manager : use this application to manage your users and persmissions. ",1,1,0)
-                ->application("GROUPS", "Groups","shaoline/resources/img/icons/groups.png","ShaContext::getShowCmoObjectListGc('ShaGroup')","system/users","Groups manager : use this application to manager user group in your website. ",0,1,0)
-                ->application("LANGUAGES", "Languages","shaoline/resources/img/icons/languages.png","ShaContext::getShowCmoObjectListGc('ShaLanguage')","system/parameters","Language manager : use this application to active or desactive languages on your website. ",0,1,0)
-                ->application("TRANSLATIONS", "Translations","shaoline/resources/img/icons/translations.png","ShaContext::getShowCmoObjectListGc('ShaTranslation')","system/parameters","Translations manager : use this application to translate globale contents. ",1,1,0)
-                ->application("CONTENTS", "Contents","shaoline/resources/img/icons/contents.png","ShaContext::getShowCmoObjectListGc('ShaContent')","site/contents","Content manager : use this application to manage your website contents. ",1,1,0)
-                ->application("PARAMETERS", "Parameters","shaoline/resources/img/icons/parameters.png","ShaContext::getShowCmoObjectListGc('ShaParameter')","system/parameters","Parameters manager : use this application to manage your website parameters. ",0,1,0)
-                ->application("APPLICATIONS", "Applications","shaoline/resources/img/icons/applications.png","ShaContext::getShowCmoObjectListGc('ShaApplication')","system/parameters","Application manager : allow you to manage your applications. ",0,1,0)
-                ->application("PERMISSIONS", "Permissions","shaoline/resources/img/icons/permissions.png","ShaContext::getShowCmoObjectListGc('ShaPermission')","system/users","Permissions manager : use this application to manage the permissions of each users. ",0,1,0)
-                ->application("MENUS", "Menus","shaoline/resources/img/icons/menus.png","ShaContext::getShowCmoObjectListGc('ShaMenu')","site/contents","Menus manager : use this application to manage the menus of your website. ",0,1,0)
-                ->application("PAGES", "Pages","shaoline/resources/img/icons/pages.png","ShaContext::getShowCmoObjectListGc('ShaPage')","site/pages","Pages manager : use this application to manage the pages of your web site. ",0,1,0)
-                //->application("", "Online","shaoline/resources/img/icons/online.png","Controller::getShowCmoObjectListGc('CmsOnline')","site/contents","Online manager : use this application to synchronize your databases. ",0,1,0)
-                //->application("", "Pushonline","shaoline/resources/img/icons/push_online.png","CmsOnline::getPushOnlineGc()","site/contents","Click here to push online your content. ",0,1,0)
-                ->application("DISCONNECT", "Disconnect","shaoline/resources/img/icons/disconnect.png","ShaUser::getDisconnectGc()","","Click here to disconnect your session. ",0,1,100)
-                ->application("RESOURCES", "Deploy", "shaoline/resources/img/icons/resources.png", "ShaContext::getLoadResourcesGc()", "site/contents", "Use this application to push all resource into web folder", 0, 1, 1)
-                ->application("ACCESS", "Access", "shaoline/resources/img/icons/htaccess.png", "ShaContext::getCreateHtaccessListGc()", "system/contents", "Use this application to rebuild htaccess file", 0, 1, 1)
-                ->application("FLASH", "Flash MSG", "shaoline/resources/img/icons/flashMessage.png", "ShaContext::getShowCmoObjectListGc('ShaFlashMessage')", "site/contents", "Use this manage user flash messages", 0, 1, 1)
-                ->application("LOGS", "Logs", "shaoline/resources/img/icons/logs.png", "ShaUtilsLog::showLogFilesGcId()", "system/security", "Use this manage user consult logs", 0, 1, 1)
+                ->application("USERS", "Users","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/users.png","ShaContext::getShowCmoObjectListGc('ShaUser')","system/users","User manager : use this application to manage your users and persmissions. ",1,1,0)
+                ->application("GROUPS", "Groups","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/groups.png","ShaContext::getShowCmoObjectListGc('ShaGroup')","system/users","Groups manager : use this application to manager user group in your website. ",0,1,0)
+                ->application("LANGUAGES", "Languages","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/languages.png","ShaContext::getShowCmoObjectListGc('ShaLanguage')","system/parameters","Language manager : use this application to active or desactive languages on your website. ",0,1,0)
+                ->application("TRANSLATIONS", "Translations","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/translations.png","ShaContext::getShowCmoObjectListGc('ShaTranslation')","system/parameters","Translations manager : use this application to translate globale contents. ",1,1,0)
+                ->application("CONTENTS", "Contents","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/contents.png","ShaContext::getShowCmoObjectListGc('ShaContent')","site/contents","Content manager : use this application to manage your website contents. ",1,1,0)
+                ->application("PARAMETERS", "Parameters","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/parameters.png","ShaContext::getShowCmoObjectListGc('ShaParameter')","system/parameters","Parameters manager : use this application to manage your website parameters. ",0,1,0)
+                ->application("APPLICATIONS", "Applications","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/applications.png","ShaContext::getShowCmoObjectListGc('ShaApplication')","system/parameters","Application manager : allow you to manage your applications. ",0,1,0)
+                ->application("PERMISSIONS", "Permissions","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/permissions.png","ShaContext::getShowCmoObjectListGc('ShaPermission')","system/users","Permissions manager : use this application to manage the permissions of each users. ",0,1,0)
+                ->application("MENUS", "Menus","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/menus.png","ShaContext::getShowCmoObjectListGc('ShaMenu')","site/contents","Menus manager : use this application to manage the menus of your website. ",0,1,0)
+                ->application("PAGES", "Pages","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/pages.png","ShaContext::getShowCmoObjectListGc('ShaPage')","site/pages","Pages manager : use this application to manage the pages of your web site. ",0,1,0)
+                //->application("", "Online","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/online.png","Controller::getShowCmoObjectListGc('CmsOnline')","site/contents","Online manager : use this application to synchronize your databases. ",0,1,0)
+                //->application("", "Pushonline","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/push_online.png","CmsOnline::getPushOnlineGc()","site/contents","Click here to push online your content. ",0,1,0)
+                ->application("DISCONNECT", "Disconnect","shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/disconnect.png","ShaUser::getDisconnectGc()","","Click here to disconnect your session. ",0,1,100)
+                ->application("RESOURCES", "Deploy", "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/resources.png", "ShaContext::getLoadResourcesGc()", "site/contents", "Use this application to push all resource into web folder", 0, 1, 1)
+                ->application("ACCESS", "Access", "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/htaccess.png", "ShaContext::getCreateHtaccessListGc()", "system/contents", "Use this application to rebuild htaccess file", 0, 1, 1)
+                ->application("FLASH", "Flash MSG", "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/flashMessage.png", "ShaContext::getShowCmoObjectListGc('ShaFlashMessage')", "site/contents", "Use this manage user flash messages", 0, 1, 1)
+                ->application("LOGS", "Logs", "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/icons/logs.png", "ShaUtilsLog::showLogFilesGcId()", "system/security", "Use this manage user consult logs", 0, 1, 1)
                  
                 ->permission("CHANGE_MAINTENANCE_STATE", "Define if a user is allowed to change the maintenance state of website")
                 ->permission("ACCESS_DESKTOP", "Define if a user is allowed to access admin desktop")
@@ -938,8 +944,8 @@ class ShaContext
 	public static function insertCss() {
 
 		$result = "";
-        if (is_file(self::getPathToWeb().self::$_obfuscatedCssFile)){
-        	$result = '<link type="text/css" rel="stylesheet" href="'.self::getSiteFullUrl()."/".self::$_obfuscatedCssFile.'" />';
+        if (is_file(self::getPathToWeb().self::getObfuscatedCssFile())){
+        	$result = '<link type="text/css" rel="stylesheet" href="'.self::getSiteFullUrl()."/".self::getObfuscatedCssFile().'" />';
         } else {
         	$shaObfuscatorManager = new ShaObfuscatorManager();
         	$shaObfuscatorManager->addFiles(self::$_cssFiles);
@@ -959,8 +965,8 @@ class ShaContext
 	public static function insertJs() {
 
 		$result = "";
-		if (is_file(self::getPathToWeb().self::$_obfuscatedJsFile)){
-			$result = '<script type="text/javascript" src="'.self::getSiteFullUrl()."/".self::$_obfuscatedJsFile.'"></script>';
+		if (is_file(self::getPathToWeb().self::getObfuscatedJsFile())){
+			$result = '<script type="text/javascript" src="'.self::getSiteFullUrl()."/".self::getObfuscatedJsFile().'"></script>';
 		} else {
 			$shaObfuscatorManager = new ShaObfuscatorManager();
 			$shaObfuscatorManager->addFiles(self::$_jsFiles);
@@ -981,8 +987,8 @@ class ShaContext
     public static function insertAdminCss() {
     	
     	$result = "";
-    	if (is_file(self::getPathToWeb().self::$_obfuscatedAdminCssFile)){
-    		$result = '<link type="text/css" rel="stylesheet" href="'.self::getSiteFullUrl()."/".self::$_obfuscatedAdminCssFile.'" />';
+    	if (is_file(self::getPathToWeb().self::getObfuscatedAdminCssFile())){
+    		$result = '<link type="text/css" rel="stylesheet" href="'.self::getSiteFullUrl()."/".self::getObfuscatedAdminCssFile().'" />';
     	} else {
     		$shaObfuscatorManager = new ShaObfuscatorManager();
     		$shaObfuscatorManager->addFiles(self::$_adminCssFiles);
@@ -1000,13 +1006,19 @@ class ShaContext
      * @return string
      */
     public static function insertAdminJs() {
-    		$result = "";
-		if (is_file(self::getPathToWeb().self::$_obfuscatedAdminJsFile)){
-			$result = '<script type="text/javascript" src="'.self::getSiteFullUrl()."/".self::$_obfuscatedAdminJsFile.'"></script>';
+        
+        //Export resource cachde suffix
+        $result = "";
+        $result .= '<script type="text/javascript">'.PHP_EOL;
+        $result .= 'var SHA_RESOURCE_SUFFIX = "' . ShaPage::getCacheSuffix() . '";'.PHP_EOL;
+        $result .= '</script>'.PHP_EOL;
+        
+		if (is_file(self::getPathToWeb().self::getObfuscatedAdminJsFile())){
+			$result .= '<script type="text/javascript" src="'.self::getSiteFullUrl()."/".self::getObfuscatedAdminJsFile().'"></script>';
 		} else {
 			$shaObfuscatorManager = new ShaObfuscatorManager();
 			$shaObfuscatorManager->addFiles(self::$_adminJsFiles);
-			$result = $shaObfuscatorManager->getIncludes(new ShaObfuscatorJS, self::getSiteFullUrl());
+			$result .= $shaObfuscatorManager->getIncludes(new ShaObfuscatorJS, self::getSiteFullUrl());
 		}
 		$result .= self::addPluginsJsFiles();
 		
@@ -1024,7 +1036,7 @@ class ShaContext
 			<div id='cms_masque' class='opacity_50'></div>
 			<div id='cms_waiting_masque' class='opacity_50'></div>
 			<div id='cms_persistent_div'></div>
-            <div id='cms_edit_picto'><img alt='' src='shaoline/resources/img/cms_btn_pen.png'></div>
+            <div id='cms_edit_picto'><img alt='' src='shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_btn_pen.png'></div>
 
 		";
 	}
@@ -1144,7 +1156,7 @@ class ShaContext
         }
         $newUrl = self::getPathToBase()."tmp/".uniqid().".".$ext;
         $result = "";
-	if (move_uploaded_file($file['tmp_name'], $newUrl)) {
+	    if (move_uploaded_file($file['tmp_name'], $newUrl)) {
             $result = $newUrl;
         } else {
             ShaUtilsLog::error("Error with 'move_uploaded_file' function (from : '".$file['tmp_name']."', to : '".$newUrl."')");
@@ -1396,16 +1408,20 @@ class ShaContext
         ShaTreatmentInfo::clearGroupInfo('PUSH_RESOURCE');
         ShaUtilsLog::info("Starting update resources !");
 
-    	//Shaoline resources
-    	$shaolineSrc = self::getPathToBase()."shaoline/resources/";
-    	$shaolineDst = self::getPathToWeb()."shaoline/resources/";
-		
-		
-        ShaTreatmentInfo::setInfo('TASK', 'PUSH_RESOURCE', 'Clearing old resources ...');
-    	if (is_dir($shaolineDst)) 
-			ShaUtilsFile::rmDir($shaolineDst);
-		
-    	ShaUtilsFile::copyFiles($shaolineSrc .'img', $shaolineDst . 'img');
+        //Shaoline resources
+        $previewsCacheSuffix = ShaPage::getCacheSuffix();
+        ShaPage::updateCacheSuffix();
+        
+        //Delete old shaoline resource folder
+        ShaTreatmentInfo::setInfo('TASK', 'PUSH_RESOURCE', 'Delete shaoline resources folder ...');
+        ShaUtilsFile::rmDir(self::getPathToWeb().'shaoline/resources_' . $previewsCacheSuffix);
+        
+        //Copy pictures
+        ShaTreatmentInfo::setInfo('TASK', 'PUSH_RESOURCE', 'Copying shaoling pictures ...');
+        $shaolineSrc = self::getPathToBase().'shaoline/resources/img';   
+        $shaolineDst = self::getPathToWeb().'shaoline/resources_' . ShaPage::getCacheSuffix() . '/img';
+        ShaUtilsFile::copyFiles($shaolineSrc, $shaolineDst);
+
     	
     	//Prepare obfuscator
     	$shaObfuscatorManager = new ShaObfuscatorManager();
@@ -1415,25 +1431,25 @@ class ShaContext
     		//Copy CSS
             ShaTreatmentInfo::setInfo('TASK', 'PUSH_RESOURCE', 'Pushing admin CSS');
     		$shaObfuscatorManager->addFiles(self::$_adminCssFiles);
-    		$shaObfuscatorManager->process(new ShaObfuscatorCSS(), self::getPathToWeb().self::$_obfuscatedAdminCssFile, true);
+    		$shaObfuscatorManager->process(new ShaObfuscatorCSS(), self::getPathToWeb().self::getObfuscatedAdminCssFile(), true);
     		$shaObfuscatorManager->clearFiles();
     		 
     		//Copy JS
             ShaTreatmentInfo::setInfo('TASK', 'PUSH_RESOURCE', 'Pushing admin JS');
     		$shaObfuscatorManager->addFiles(self::$_adminJsFiles);
-    		$shaObfuscatorManager->process(new ShaObfuscatorJS(), self::getPathToWeb().self::$_obfuscatedAdminJsFile, true);
+    		$shaObfuscatorManager->process(new ShaObfuscatorJS(), self::getPathToWeb().self::getObfuscatedAdminJsFile(), true);
     		$shaObfuscatorManager->clearFiles();
     		 
     		//Copy CSS
             ShaTreatmentInfo::setInfo('TASK', 'PUSH_RESOURCE', 'Pushing CSS');
     		$shaObfuscatorManager->addFiles(self::$_cssFiles);
-    		$shaObfuscatorManager->process(new ShaObfuscatorCSS(),  self::getPathToWeb().self::$_obfuscatedCssFile, true);
+    		$shaObfuscatorManager->process(new ShaObfuscatorCSS(),  self::getPathToWeb().self::getObfuscatedCssFile(), true);
     		$shaObfuscatorManager->clearFiles();
     		
     		//Copy JS
             ShaTreatmentInfo::setInfo('TASK', 'PUSH_RESOURCE', 'Pushing JS');
-    		$shaObfuscatorManager->addFiles(self::$_jsFiles);
-    		$shaObfuscatorManager->process(new ShaObfuscatorJS(), self::getPathToWeb().self::$_obfuscatedJsFile, true);
+    		$shaObfuscatorManager->addFiles(self::$_jsFile);
+    		$shaObfuscatorManager->process(new ShaObfuscatorJS(), self::getPathToWeb().self::getObfuscatedJsFile(), true);
     		$shaObfuscatorManager->clearFiles();
     		 
     		
@@ -1459,9 +1475,15 @@ class ShaContext
     	if (is_array($plugins)) {
     		foreach ($plugins as $plugin) {
                 ShaTreatmentInfo::setInfo('TASK', 'PUSH_RESOURCE', 'Pushing plugin ' + $plugin);
+                
+                //Delete old folder
+                ShaTreatmentInfo::setInfo('TASK', 'PUSH_RESOURCE', 'Delete plugin ' . $plugin . ' resources folder ...');
+                ShaUtilsFile::rmDir(self::getPathToWeb().'plugins/'.$plugin.'/resources_' . $previewsCacheSuffix);
+                
+                //Copy files in new folder
+                ShaTreatmentInfo::setInfo('TASK', 'PUSH_RESOURCE', 'Copying plugin ' . $plugin . ' pictures ...');
     			$pluginSrc = self::getPathToBase()."plugins/".$plugin."/resources";
-    			$pluginDst = self::getPathToWeb()."plugins/".$plugin."/resources";
-    			if (is_dir($pluginDst)) ShaUtilsFile::rmDir($pluginDst);
+    			$pluginDst = self::getPathToWeb()."plugins/".$plugin."/resources_".ShaPage::getCacheSuffix();
     			ShaUtilsFile::copyFiles($pluginSrc, $pluginDst);
     		}
     	}

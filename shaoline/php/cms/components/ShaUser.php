@@ -218,7 +218,7 @@ class ShaUser extends ShaCmo
         $login = ShaUtilsString::cleanForBalise($login);
         $login = ShaUtilsString::cleanForSQL($login);
         $password = ShaContext::securityEncode($password);
-
+        
         if ($useMail) {
 			
             $user = ShaUser::loadByWhereClause(
@@ -355,6 +355,7 @@ class ShaUser extends ShaCmo
         $ShaOperation
             ->setDaoClass("ShaUser")
             ->setDaoMethod("getForgetPasswordForm")
+            ->setNoMask(false)
             ->save()
         ;
 
@@ -368,8 +369,8 @@ class ShaUser extends ShaCmo
                     'div_dom_id'    => $id."_div"
                 )
             )
-            ->addField("login")->setLibEnable(false)/*->setRsaProtected()*/->setFormat(ShaUtilsString::PATTERN_ALL)->setPlaceholder(ShaContext::t("Login"))->end()
-            ->addField("password")->setLibEnable(false)/*->setRsaProtected()*/->setRenderer(ShaFormField::RENDER_TYPE_PASSWORD)->setFormat(ShaUtilsString::PATTERN_ALL)->setPlaceholder(ShaContext::t("Password"))->end()
+            ->addField("login")->setLibEnable(false)/*->setRsaProtected()*/->setFormat(ShaUtilsString::PATTERN_ALL)->setPlaceholder(ShaContext::t("Login"))->setSubmitOnEnter(true)->end()
+            ->addField("password")->setLibEnable(false)/*->setRsaProtected()*/->setRenderer(ShaFormField::RENDER_TYPE_PASSWORD)->setFormat(ShaUtilsString::PATTERN_ALL)->setPlaceholder(ShaContext::t("Password"))->setSubmitOnEnter(true)->end()
         ;
 
         $shaIpSecurityChecker = ShaIpSecurityChecker::get(ShaContext::getClientIp());
@@ -614,7 +615,7 @@ class ShaUser extends ShaCmo
 
 		$output = array();
 
-		ShaUtilsJs::constructMenuType1($output, $menu, "shaoline_menu", 0, 0, "<img alt='folder' src='shaoline/resources/img/cms_menu_folder.png' />", true);
+		ShaUtilsJs::constructMenuType1($output, $menu, "shaoline_menu", 0, 0, "<img alt='folder' src='shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_menu_folder.png' />", true);
 
 		$html = "";
 		foreach ($output as $htmlDiv) {

@@ -103,14 +103,17 @@ class ShaApplication extends ShaCmo
         $function = $this->getValue('application_function');
         $fFunctionResult = null;
         eval("\$fFunctionResult = $function;");
-
+        
+        $icon = ShaUtilsString::quoteProtection($this->getValue('application_icon'));
+        $icon = ShaUtilsString::replace($icon, "/resources/", "/resources_" . ShaPage::getCacheSuffix() . "/");
+        
         return "
 			<div $fFunctionResult class='shaoline_menu_icon' title='" . ShaUtilsString::quoteProtection(
             $this->getValue('application_description')
         ) . "'>
 				<img title='" . ShaUtilsString::quoteProtection($this->getValue('application_description')) . "'
 					 alt='" . ShaUtilsString::quoteProtection($this->getValue('application_name')) . "'
-					 src='" . ShaUtilsString::quoteProtection($this->getValue('application_icon')) . "'
+					 src='" . ShaUtilsString::quoteProtection($icon) . "'
 				/>
 				<div class='shaoline_menu_icon_label'>" . $this->getValue('application_name') . "</div>
 			</div>
@@ -132,13 +135,16 @@ class ShaApplication extends ShaCmo
         $result = null;
         eval("\$result = $function;");
 
+        $icon = ShaUtilsString::quoteProtection($this->getValue('application_icon'));
+        $icon = ShaUtilsString::replace($icon, "/resources/", "/resources_" . ShaPage::getCacheSuffix() . "/");
+        
         return "
 			<div $result class='cms_desktop_icon' title='" . ShaContext::tj(
             ShaUtilsString::quoteProtection($this->getValue('application_description'))
         ) . "' style='position:absolute;top:" . $y . "px;left:" . $x . "px'>
 				<img title='" . ShaContext::tj(ShaUtilsString::quoteProtection($this->getValue('application_description'))) . "'
 					 alt='" . ShaContext::tj(ShaUtilsString::quoteProtection($this->getValue('application_name'))) . "'
-					 src='" . ShaUtilsString::quoteProtection($this->getValue('application_icon')) . "'
+					 src='" . ShaUtilsString::quoteProtection($icon) . "'
 				/>
 				<div class='cms_desktop_icon_label'>" . ShaContext::t(strtoupper($this->getValue('application_name'))) . "</div>
 			</div>

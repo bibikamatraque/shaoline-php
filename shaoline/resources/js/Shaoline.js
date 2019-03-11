@@ -20,8 +20,8 @@ function Shaoline(){}
 
 Shaoline.currentEditedElement = null;
 
-Shaoline.fieldCheckerOkPicto = '<img class="zone_checker_picto" alt="error" src="plugins/MonRef/resources/img/checkTrue.png">';
-Shaoline.fieldCheckerKoPicto = '<img class="zone_checker_picto" alt="error" src="plugins/MonRef/resources/img/checkFalse.png">';
+Shaoline.fieldCheckerOkPicto = '<div class="zone_checker_picto_ok" />';
+Shaoline.fieldCheckerKoPicto = '<div class="zone_checker_picto_ko" />';
 
 Shaoline.setRsaPublicKey = function(key){
 	this.rsaPublicKey = key;
@@ -141,29 +141,35 @@ Shaoline.doAction = function(gcId, activeMask, additionalParameters) {
     if (activeMask){
         $j("#cms_waiting_masque").css("display", "block");
     }
+    
 
-    var parameters =   {
-        command : 'doAction',
-        config : gcId
+    var fnc = function(gcId, additionalParameters){
+	
+	    var parameters =   {
+	        command : 'doAction',
+	        config : gcId
+	    }
+	
+	    if (additionalParameters != undefined){
+	        for (p in additionalParameters){
+	            parameters[p] = additionalParameters[p];
+	        }
+	    }
+	
+	    UtilsJquery.jQueryAjax(
+	        "cmsAsynchrone.php",
+	        "Shaoline.doActionResult(j)",
+	        parameters, 
+	        true
+	    );
     }
-
-    if (additionalParameters != undefined){
-        for (p in additionalParameters){
-            parameters[p] = additionalParameters[p];
-        }
-    }
-
-    UtilsJquery.jQueryAjax(
-        "cmsAsynchrone.php",
-        "Shaoline.doActionResult(j)",
-        parameters
-        , true);
+    
+    setTimeout(fnc, 50, gcId, additionalParameters);
+    
+    
 };
 
 Shaoline.doActionResult = function(j) {
-
-    //Hide mask
-    $j("#cms_waiting_masque").css("display", "none");
 
     //Clean result
     var asynchroneResult = j;
@@ -176,7 +182,7 @@ Shaoline.doActionResult = function(j) {
 
         // REDIRECTION //
         if (result.renderer == "NOTHING" ){
-            //DO NOTHING
+        	//DO NOTHING
         } else if (result.renderer == "REDIRECT" ){
 
             if (result.content == "SHA_CURRENT") {
@@ -214,6 +220,7 @@ Shaoline.doActionResult = function(j) {
 
         // ERROR //
         else {
+            $j("#cms_waiting_masque").css("display", "none");
             UtilsWindow.drawPopin(0, 'red', result.content, "Error", "", "", "cms-editor-error", true, true);
             return;
         }
@@ -228,6 +235,7 @@ Shaoline.doActionResult = function(j) {
                         UtilsWindow.windowDeleteHeightIfNotStillNecessary(resizeZoneId);
                     }
                 } catch (e){
+                    $j("#cms_waiting_masque").css("display", "none");
                     UtilsWindow.drawPopin(0, 'red', "Error when execute : " + result.jsActions[i] + " : " + e.message, "Error", "", "", "cms-editor-error", true, true);
                     return;
                 }
@@ -241,8 +249,10 @@ Shaoline.doActionResult = function(j) {
             }
         }
 
+        $j("#cms_waiting_masque").css("display", "none");
 
     } catch (e){
+        $j("#cms_waiting_masque").css("display", "none");
         UtilsWindow.drawPopin(0, 'red', asynchroneResult, "Error", "", "", "cms-editor-error", true, true);
         return;
     }
@@ -309,41 +319,46 @@ Shaoline.submitForm = function(gcId, domId) {
 
     $j("#cms_waiting_masque").css("display", "block");
 
-    var index = 0;
-    var values = new Array();
-    var item = document.getElementsByName(domId + "_" + index);
-    var qty;
     
-    var data = new FormData();
-    while (item.length > 0) {
-        values[index] = new Array();
-        qty = item.length
-        for ( var i = 0; i < qty; i++) {
-        	if (item[i].type == "file"){
-        		data.append("FILE_"+index, Shaoline.getInputValue(item[i]));
-        	} else {
-        		if (item[i].hasAttribute("shaRsa")){
-        			values[index][i] = Shaoline.rsaCrypt(Shaoline.getInputValue(item[i]));
-        		} else {
-        			values[index][i] = Shaoline.getInputValue(item[i]);
-        		}
-        	}
-        }
-        index++;
-        item = document.getElementsByName(domId + "_" + index);
+    var fnc = function(gcId, domId){
+	    var index = 0;
+	    var values = new Array();
+	    var item = document.getElementsByName(domId + "_" + index);
+	    var qty;
+	    
+	    var data = new FormData();
+	    while (item.length > 0) {
+	        values[index] = new Array();
+	        qty = item.length
+	        for ( var i = 0; i < qty; i++) {
+	        	if (item[i].type == "file"){
+	        		data.append("FILE_"+index, Shaoline.getInputValue(item[i]));
+	        	} else {
+	        		if (item[i].hasAttribute("shaRsa")){
+	        			values[index][i] = Shaoline.rsaCrypt(Shaoline.getInputValue(item[i]));
+	        		} else {
+	        			values[index][i] = Shaoline.getInputValue(item[i]);
+	        		}
+	        	}
+	        }
+	        index++;
+	        item = document.getElementsByName(domId + "_" + index);
+	    }
+	
+	    
+	    data.append("command", 'submitForm');
+	    data.append("config", gcId);
+	    data.append("values", JSON.stringify(values));
+	    
+	    UtilsJquery.jQueryFormDataAjax(
+	        "cmsAsynchrone.php",
+	        "Shaoline.doActionResult(j)",
+	        data,
+	        true
+	    );
     }
-
     
-    data.append("command", 'submitForm');
-    data.append("config", gcId);
-    data.append("values", JSON.stringify(values));
-    
-    UtilsJquery.jQueryFormDataAjax(
-        "cmsAsynchrone.php",
-        "Shaoline.doActionResult(j)",
-        data,
-        true
-    );
+    setTimeout(fnc, 50, gcId, domId);
 
 };
 
@@ -478,3 +493,19 @@ Shaoline.manageEditPicto = function(event, gcId){
 	Shaoline.editPicto.css('top', '' + pos.top + 'px');
 	Shaoline.editPicto.show();
 };
+
+
+/**
+ * Manage ShaForm autosubmit
+ */
+Shaoline.manageFormAautoSubmit = function(event, formId) {
+	if (event.keyCode === 13) {
+		var form = $j('#' + formId);
+		if (form) {
+			form.find('input[type="submit"]').click(); 
+		}
+	}
+}
+
+
+

@@ -135,8 +135,8 @@ class ShaPage extends ShaCmo
         $form
             ->setDaoClass(__CLASS__)
             ->setSubmitable(false)
-            ->addField()->setDaoField("page_active")->setLibEnable(false)->setRenderer(ShaFormField::RENDER_TYPE_SWITCHPICTURE)->setDatas(array("0"=>'shaoline/resources/img/cms_led_red.png',"1"=>'shaoline/resources/img/cms_led_green.png'))->end()
-            ->addField()->setDaoField("language_id")->setLibEnable(false)->setRenderer(ShaFormField::RENDER_TYPE_SWITCHPICTURE)->setDatas(array_merge(array("0"=>'shaoline/resources/img/no_flag.png'), ShaLanguage::getValuesMapping("language_id", "language_flag")))->setWidth(20)->end()
+            ->addField()->setDaoField("page_active")->setLibEnable(false)->setRenderer(ShaFormField::RENDER_TYPE_SWITCHPICTURE)->setDatas(array("0"=>'shaoline/resources_' . ShaPage::getCacheSuffix() . '/img/cms_led_red.png',"1"=>'shaoline/resources_' . self::getCacheSuffix() . '/img/cms_led_green.png'))->end()
+            ->addField()->setDaoField("language_id")->setLibEnable(false)->setRenderer(ShaFormField::RENDER_TYPE_SWITCHPICTURE)->setDatas(array_merge(array("0"=>'shaoline/resources_' . ShaPage::getCacheSuffix() . '/img/no_flag.png'), ShaLanguage::getValuesMapping("language_id", "language_flag")))->setWidth(20)->end()
             ->addField()->setDaoField("page_international_name")->setLibEnable(false)->setWidth(200)->end()
             ->addField()->setDaoField("page_qty_visite")->setLibEnable(false)->setWidth(100)->end()
         ;
@@ -157,9 +157,9 @@ class ShaPage extends ShaCmo
             ->setInputWidth(300)
             ->addField()->setInputEnable(false)->setLib('<div class="cms_link"><a href="'.$this->getUrlBase().'">'.ShaContext::t("Go to page").'</a></div>')->end()
             ->addField()->setInputEnable(false)->setLib('<div class="cms_title">'.ShaContext::t("Global").'</div>')->end()
-            ->addField()->setDaoField("page_active")->setLib(ShaContext::t("is_page_active"))->setWidth(15)->setRenderer(ShaFormField::RENDER_TYPE_SWITCHPICTURE)->setDatas(array("0"=>'shaoline/resources/img/cms_led_red.png',"1"=>'shaoline/resources/img/cms_led_green.png'))->end()
+            ->addField()->setDaoField("page_active")->setLib(ShaContext::t("is_page_active"))->setWidth(15)->setRenderer(ShaFormField::RENDER_TYPE_SWITCHPICTURE)->setDatas(array("0"=>'shaoline/resources_' . ShaPage::getCacheSuffix() . '/img/cms_led_red.png',"1"=>'shaoline/resources_' . self::getCacheSuffix() . '/img/cms_led_green.png'))->end()
             ->addField()->setLib("Qty visits")->setDaoField("page_qty_visite")->setEditable(false)->end()
-            ->addField()->setDaoField("language_id")->setLib(ShaContext::t("Language"))->setWidth(15)->setRenderer(ShaFormField::RENDER_TYPE_SWITCHPICTURE)->setDatas(array_merge(array("0"=>'shaoline/resources/img/no_flag.png'), ShaLanguage::getValuesMapping("language_id", "language_flag")))->setWidth(20)->end()
+            ->addField()->setDaoField("language_id")->setLib(ShaContext::t("Language"))->setWidth(15)->setRenderer(ShaFormField::RENDER_TYPE_SWITCHPICTURE)->setDatas(array_merge(array("0"=>'shaoline/resources_' . ShaPage::getCacheSuffix() . '/img/no_flag.png'), ShaLanguage::getValuesMapping("language_id", "language_flag")))->setWidth(20)->end()
             ->addField()->setLib("Name")->setDaoField("page_international_name")->end()
             ->addField()->setLib("Variables")->setDaoField("page_variables")->end()
             ->addField()->setLib("Title")->setDaoField("page_title")->end()
@@ -369,9 +369,9 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
 	 */
 	public static function rebuildHtaccess() {
 
-	    //TODO : use config file
+	    $xdebug = "";
 	    $xdebugConf = ShaContext::getConf()->get("env/xdebug");
-	    if ($xdebugConf != ""){
+	    if ($xdebugConf != null && $xdebugConf != ""){
 	        $xdebug = "XDEBUG_SESSION_START=".$xdebugConf."&";
 	    }
 	    
@@ -384,10 +384,15 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
 
 			[HTACCESS]
 					
-			#default image
-            #<FilesMatch \".(jpg|png|gif)$\">
-            #    ErrorDocument 404 \"/resources/img/cms_no_picture.png\"
-            #</FilesMatch>
+            <IfModule mod_headers.c>
+                <FilesMatch \"\.(?i:css|js)$\">
+                    Header set Cache-Control \"max-age=172800, public\"
+                </FilesMatch>
+
+                <FilesMatch \"\.(?i:bmp|gif|jpe?g|png|ico)$\">
+                    Header set Cache-Control \"max-age=172800, public\"
+                </FilesMatch>
+            </IfModule>
 
 			#Error pages
 			ErrorDocument 404 ".ShaContext::getSiteFullUrl()."/index.php?p=notFound
@@ -410,9 +415,10 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
 			RewriteCond %{REQUEST_FILENAME} !-f
 			RewriteCond %{REQUEST_FILENAME} !-d
 
-			RewriteRule ^shaoline/resources/img/$ ".ShaContext::getConf()->get("site/folder")."index.php?".$xdebug."p=1 [L]
-			RewriteRule ^shaoline/resources/css/$ ".ShaContext::getConf()->get("site/folder")."index.php?".$xdebug."p=1 [L]
-			RewriteRule ^shaoline/resources/js/$ ".ShaContext::getConf()->get("site/folder")."index.php?".$xdebug."p=1 [L]
+            #Check other system
+			RewriteRule ^shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/$ ".ShaContext::getConf()->get("site/folder")."index.php?".$xdebug."p=1 [L]
+			RewriteRule ^shaoline/resources_" . ShaPage::getCacheSuffix() . "/css/$ ".ShaContext::getConf()->get("site/folder")."index.php?".$xdebug."p=1 [L]
+			RewriteRule ^shaoline/resources_" . ShaPage::getCacheSuffix() . "/js/$ ".ShaContext::getConf()->get("site/folder")."index.php?".$xdebug."p=1 [L]
 		";
 
 
@@ -430,9 +436,9 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
 
         /** @type ShaPage $page */
 		foreach ($pages as $page) {
-			$rules = $page->getHtaccessUrl(false);
+		    $rules = $page->getHtaccessUrl(false);
+		    $rules[1] = ShaUtilsString::replace($rules[1], "?", "?".$xdebug);
 			$pageRedirection .= "RewriteRule ^".$rules[0]." ".$rules[1]." #".$page->getValue('page_comment');
-			$pageRedirection = ShaUtilsString::replace($pageRedirection, "?", "?".$xdebug);
 			$pageRedirection .= "\n";
 		}
 
@@ -619,7 +625,8 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
         //CLEAN
 		$url = $base.$languageAbr.$sUrl.$sUrlAdditional."/";
 		$url = ShaUtilsString::replace($url, "//", "/");
-        $url = ShaUtilsString::replace($url, "http:/", "http://");
+		$url = ShaUtilsString::replace($url, "http:/", "http://");
+		$url = ShaUtilsString::replace($url, "https:/", "https://");
 		return $url;
 	}
 
@@ -648,16 +655,15 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
         //Construct condition
         $condition = implode("/", $urlComponents['condition']);
         if ($languageAbr != "") $languageAbr .= "/";
-        //$condition = $languageAbr.$condition.'/';
-		$condition = $languageAbr.$condition;
+        $condition = $languageAbr.$condition.'/';
+		//$condition = $languageAbr.$condition;
         if ($this->getValue("page_need_redirect") == 1) {
         	$condition .= "$";
         } else {
         	$condition .= "?$";
         }
-        if ($condition == "/$"){
-            $condition = "$";
-        }
+        //if ($condition == '$')$condition = '/$';
+        //if ($condition == '?$')$condition = '/?$';
         
         //Construct action
         $action = implode("", $urlComponents['action']);
@@ -666,7 +672,7 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
         $action = $base.$action;
 
 		$condition = ShaUtilsString::replace($condition, "//", "/");
-
+		
 		return array($condition, $action);
 	}
 
@@ -879,9 +885,9 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
 	public function drawTwitter($cmoObject) {
 		if ($this->getValue('page_active_twitter') == "1") {
 			
-			self::addJsScriptForEndOfPage("
+			/*self::addJsScriptForEndOfPage("
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');	
-			");
+			");*/
 			
             return '
 <!-- Twitter link -->
@@ -944,6 +950,7 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
 		
 		//Get page ID
 		$pageId = ShaUtilsArray::getPOSTGET("p");
+		
 		$originalPage = $pageId;
 		if (!ShaUtilsString::isRegexVariable($pageId)) {
 			//404 page
@@ -981,7 +988,6 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
             //}
         }
 
-
 		$pageFound = $page->load(array('page_international_name' => $pageId, 'language_id' => $languageId));
 		if (!$pageFound) {
 			
@@ -994,7 +1000,7 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
 				
 				//ShaUtilsLog::fatal(__CLASS__."::".__FUNCTION__." : 404 page not found in database ! ($requestQuery)");
                 //throw new Exception(ShaContext::t("Fatal error occured : no 404 page found !"));
-				echo "404 page not found !";
+				echo "The '404 page' is not configured !";
 				return;
 			}
                 
@@ -1030,6 +1036,11 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
 		//start of head
         echo  "<head>".PHP_EOL;
 
+        //Export resource cachde suffix
+        echo '<script type="text/javascript">'.PHP_EOL;
+        echo 'var SHA_RESOURCE_SUFFIX = "' . ShaPage::getCacheSuffix() . '";'.PHP_EOL;
+        echo '</script>'.PHP_EOL;
+        
 		//Draw basic metatags
 		$page->drawBasicMetatags();
 
@@ -1078,6 +1089,7 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
 		//start of body
         echo "<body>".PHP_EOL;
 
+        
 		//Precode
 		if (self::$preBodyCode != "") {
             echo self::$preBodyCode;
@@ -1150,7 +1162,7 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
         echo "
             <script type='text/javascript'>
                 ".ShaGarbageCollector::getGcJsCode()."
-                <!-- Capture mouse motions -->
+                // Capture mouse motions
                 UtilsWindow.launchWindowsMoveSystem();
                 UtilsWindow.launchWindowsUpSystem();
             </script>
@@ -1288,14 +1300,45 @@ xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9'
     }
 
     /**
+     * Return cache suffix
+     */
+    public static function updateCacheSuffix(){
+        $date = new DateTime();
+        ShaParameter::set('CACHE_SUFFIX', $date->format('YmdHis'));
+    }
+    
+    
+    /**
+     * Return cache suffix
+     */
+    public static function getCacheSuffix(){
+        return ShaParameter::get('CACHE_SUFFIX');
+    }
+    
+    /**
      * Add JS importation
      *
      * @param $scriptUrl
      */
     public static function addJsScriptUrlForEndOfPage($scriptUrl){
-        self::$_endOfPageJsScript[] = $scriptUrl;
+        self::$_endOfPageJsScript[] = ShaUtilsString::replace($scriptUrl, '/resources/', '/resources_' . self::getCacheSuffix() . '/') ;
     }
 
+    /**
+     * Add JS 
+     */
+    public static function echoAddCssFile($scriptUrl){
+        $scriptUrl = ShaUtilsString::replace($scriptUrl, '/resources/', '/resources_' . self::getCacheSuffix() . '/') ;
+        echo  "<link type='text/css' rel='stylesheet' href='" . $scriptUrl . "'>";
+    }
+    /**
+     * Add JS
+     */
+    public static function echoAddJsFile($scriptUrl){
+        $scriptUrl = ShaUtilsString::replace($scriptUrl, '/resources/', '/resources_' . self::getCacheSuffix() . '/') ;
+        echo  "<script type='text/javascript' src='" . $scriptUrl . "'></script>";
+    }
+    
 }
 
 ?>

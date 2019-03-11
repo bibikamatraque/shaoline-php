@@ -14,10 +14,6 @@ PATCH => Some fixs or small features, backwards compatibility
 
 ## Historical versions
 
-v.1.1.0 : 2018-04 
-
-- Adding cache system for resources (pictures, css, js)
-
 v.1.0.0 : 2018-04  
 
 - Framework core

@@ -124,7 +124,9 @@ class ShaFormField extends ShaChildSerializable
 	private $_additionalJs = array();
 	/** @var array $_complexity */
 	public $_complexity = null;
-
+	/** @var bool $_submitOnEnter */
+	public $_submitOnEnter = false;
+	
 	public function toString($glue = PHP_EOL) {
 		echo "######################################".$glue;
 		$attributes = get_object_vars($this);
@@ -974,6 +976,26 @@ class ShaFormField extends ShaChildSerializable
         return $this;
     }
 
+    
+    /**
+     * @return mixed
+     */
+    public function getSubmitOnEnter()
+    {
+        return $this->_submitOnEnter;
+    }
+    
+    /**
+     * @param mixed $relation
+     *
+     * @return ShaFormField
+     */
+    public function setSubmitOnEnter($value)
+    {
+        $this->_submitOnEnter = $value;
+        return $this;
+    }
+    
     /**
      * Retun true if field can be use in search form
      *
@@ -1366,6 +1388,8 @@ class ShaFormField extends ShaChildSerializable
 
         $required = (!$this->isAllowEmpty()) ? " required " : "";
 
+        $submitOnEnter = ($this->_submitOnEnter) ? " onkeyup=\"Shaoline.manageFormAautoSubmit(event, '" . $this->_parent->getDomId() . "')\" " : "";
+        
         ///// TEXT ////
         if ($this->_renderer == self::RENDER_TYPE_TEXT) {
 
@@ -1385,6 +1409,7 @@ class ShaFormField extends ShaChildSerializable
                         $title
                         $value
                         $rsaAttribute
+                        $submitOnEnter
                     >";
             } else {
                 return $this->_value;
@@ -1419,6 +1444,7 @@ class ShaFormField extends ShaChildSerializable
                         $title
                         $value
                         $rsaAttribute
+                        $submitOnEnter
                     >";
             } else {
                 return $this->_value;
@@ -1443,6 +1469,7 @@ class ShaFormField extends ShaChildSerializable
                         $jsEvents
                         $title
                         $rsaAttribute
+                        $submitOnEnter
                     >$value</textarea>";
             } else {
                 return $this->_value;
@@ -1587,6 +1614,20 @@ class ShaFormField extends ShaChildSerializable
                     </option>
                	";
             }
+            
+            if ($this->_datas == null && count($this->_datas) == 0 && getType($this->_value) == 'array' && count($this->_value) == 2 )
+            {
+                $options .= "
+                    <option
+                        selected
+                        value='".$this->_value[0]."'
+                    >
+                    ".$this->_value[1]."
+                    </option>
+               	";
+            }
+            
+            
             $options .= "</select>";
             
             if ($this->_renderer == self::RENDER_TYPE_DB_COMBOBOX) {
@@ -1670,7 +1711,7 @@ class ShaFormField extends ShaChildSerializable
         //// PICTURE ////
         elseif ($this->_renderer == self::RENDER_TYPE_PICTURE){
 
-            $path = ($this->_value != "") ? $this->_value : "shaoline/resources/img/cms_no_picture.png";
+            $path = ($this->_value != "") ? $this->_value : "shaoline/resources_" . ShaPage::getCacheSuffix() . "/img/cms_no_picture.png";
 			            
             if ($this->_isEditable){
             	
@@ -1750,9 +1791,11 @@ class ShaFormField extends ShaChildSerializable
                     >
 				";
 
-        } elseif ($this->_renderer == self::RENDER_TYPE_DATE) {
-
+        } elseif ($this->_renderer == self::RENDER_TYPE_DATE) {   
+   
+            
         	$value = (!is_array($this->_value) && $this->_value!="") ? " value = '".ShaUtilsString::quoteProtection($this->_value)."' " : "";
+        	
         	
         	if ($this->_datePickerParams == null){
         		$this->_datePickerParams = array(
@@ -1764,18 +1807,19 @@ class ShaFormField extends ShaChildSerializable
         	
         	
         	$datePickerParams = array();
-        	foreach ($this->_datePickerParams as $key => $value) {
-        		if ($value === (int)$value){
-        			$datePickerParams[] = $key . ":" . $value;
-        		} elseif ($value === true) {
-        			$datePickerParams[] = $key . ":true";
-        		} elseif ($value === false) {
-        			$datePickerParams[] = $key . ":false";
+        	foreach ($this->_datePickerParams as $key => $val) {
+        	    if ($val === (int)$val){
+        	        $datePickerParams[] = $key . " : " . $val;
+        	    } elseif ($val === true) {
+        			$datePickerParams[] = $key . " : true";
+        	    } elseif ($val === false) {
+        			$datePickerParams[] = $key . " : false";
         		} else {
-        			$datePickerParams[] = $key . ":'" . $value ."'";
+        		    $datePickerParams[] = $key . " : '" . $val ."'";
         		}
         	}
         	$js = "\$j('#".$id."').datepicker({  ".implode(",", $datePickerParams)."});";
+
         	
             ShaPage::addJsScriptForEndOfPage($js);
             ShaResponse::addJsScript($js);
@@ -1783,6 +1827,7 @@ class ShaFormField extends ShaChildSerializable
         		return "
         			<input
         			type='text'
+                    readonly
         			$cssStyle
         			name='".$name."'
         			id='".$id."'

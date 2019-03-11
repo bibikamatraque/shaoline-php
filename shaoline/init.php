@@ -5,7 +5,7 @@
  * @category Init
  * @package  Shaoline
  * @author   Bastien DUHOT <bastien.duhot@free.fr>
- * @license  mon-referendum.com copyright
+ * @license  Shaoline-php copyright
  * @link     No link
  *
  */

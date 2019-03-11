@@ -9,7 +9,7 @@
  * @package    ShaUtils
  * @subpackage Php
  * @author     Bastien DUHOT <bastien.duhot@free.fr>
- * @license    mon-referendum.com copyright
+ * @license    Shaoline-php copyright
  * @link        No link
  *
  */
@@ -69,11 +69,15 @@ class ShaObfuscatorManager {
 		foreach ($this->_files as $file) {
 			$fileInfo = pathinfo($file);
 			if (isset($fileInfo['extension']) && in_array(strtolower($fileInfo['extension']), $extensions)){
+			    //$file = ShaUtilsString::replace($file, ".css",  ShaPage::getCacheSuffix() . ".css");
+			    //$file = ShaUtilsString::replace($file, ".js",  ShaPage::getCacheSuffix() . ".js");
+			    $file = ShaUtilsString::replace($file, "/resources/",  '/resources_' . ShaPage::getCacheSuffix() . "/");
 				$result .= ShaUtilsString::replace($include, "[URL]", $dst."/".$file).PHP_EOL;
 			} else {
-				$result .= $file.PHP_EOL;
+			    $result .= $file.PHP_EOL;
 			}
 		}
+	
 		return $result;
 	}
 	
@@ -116,6 +120,9 @@ class ShaObfuscatorManager {
 				} else {
 					
 					$dstFile = $dst.$file;
+					//$dstFile = ShaUtilsString::replace($dstFile, ".css",  ShaPage::getCacheSuffix() . ".css");
+					//$dstFile = ShaUtilsString::replace($dstFile, ".js",  ShaPage::getCacheSuffix() . ".js");
+					$dstFile = ShaUtilsString::replace($dstFile, "/resources/",  '/resources_' . ShaPage::getCacheSuffix() . "/");
 					if (!is_file($dstFile)){ ShaUtilsFile::createFile($dstFile);}
 					file_put_contents($dstFile, $content);
 					
