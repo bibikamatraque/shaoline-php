@@ -71,7 +71,7 @@ class ShaApplication extends ShaCmo
             ->setSubmitable(false)
             ->addField()->setDaoField("application_icon")->setLibEnable(false)->setRenderer(ShaFormField::RENDER_TYPE_PICTURE)->setWidth(35)->end()
             ->addField()->setDaoField("application_name")->setLibEnable(false)->setWidth(150)->end()
-            ->addField()->setDaoField("application_name")->setLibEnable(false)->setWidth(300)->end();
+            ->addField()->setDaoField("application_description")->setLibEnable(false)->setWidth(300)->end();
         return $form;
     }
 
@@ -86,9 +86,9 @@ class ShaApplication extends ShaCmo
         $form = new ShaForm();
         $form
             ->setDaoClass(__CLASS__)
-            ->addField()->setDaoField("application_icon")->setLib(ShaContext::t("Icon"))->setRenderer(ShaFormField::RENDER_TYPE_PICTURE)->end()
-            ->addField()->setDaoField("application_name")->setLib(ShaContext::t("Name"))->end()
-            ->addField()->setDaoField("application_description")->setLib(ShaContext::t("Description"))->setRenderer(ShaFormField::RENDER_TYPE_TEXTAREA )->end();
+            ->addField()->setDaoField("application_icon")->setLib(ShaContext::t("Icon"))->setRenderer(ShaFormField::RENDER_TYPE_PICTURE)->setWidth(500)->end()
+            ->addField()->setDaoField("application_name")->setLib(ShaContext::t("Name"))->setWidth(500)->end()
+            ->addField()->setDaoField("application_description")->setLib(ShaContext::t("Description"))->setRenderer(ShaFormField::RENDER_TYPE_TEXTAREA )->setWidth(500)->setHeight(300)->end();
         return $form;
 
     }

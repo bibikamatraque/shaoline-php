@@ -74,9 +74,9 @@ class ShaParameter extends ShaCmo
         $form = new ShaForm();
         $form
             ->setDaoClass(__CLASS__)
-            ->addField()->setDaoField("parameter_key")->setLibEnable(false)->end()
-            ->addField()->setDaoField("parameter_value")->setLibEnable(false)->end()
-            ->addField()->setDaoField("parameter_description")->setLibEnable(false)->end()
+            ->addField()->setDaoField("parameter_key")->setLib("Key : ")->end()
+            ->addField()->setDaoField("parameter_value")->setLib("Value : ")->end()
+            ->addField()->setDaoField("parameter_description")->setLib("Description : ")->end()
         ;
         return $form;
 

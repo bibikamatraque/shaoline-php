@@ -68,6 +68,7 @@ require_once __DIR__.'/php/cms/components/ShaUserFlashMessage.php';
 require_once __DIR__.'/php/cms/components/ShaSession.php';
 require_once __DIR__.'/php/cms/components/ShaIpSecurityChecker.php';
 require_once __DIR__.'/php/cms/components/ShaRsa.php';
+require_once __DIR__.'/php/cms/components/ShaBlackIp.php';
 
 require_once __DIR__.'/php/utils/obfuscators/IShaObfuscator.php';
 require_once __DIR__.'/php/utils/obfuscators/ShaMinimizerJS.php';
